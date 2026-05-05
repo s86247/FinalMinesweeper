@@ -19,11 +19,11 @@ void setGameSize(t_size size)
 {
     universalGameSize = size;
 }
-void getGameSize(t_size size, bool isRow)
+int getGameSize(bool isRow)
 {
     if(isRow)
     {
-        switch (size)
+        switch (universalGameSize)
         {
         case SMALL:
             return 9;
@@ -37,7 +37,7 @@ void getGameSize(t_size size, bool isRow)
     }
     else
     {
-        switch (size)
+        switch (universalGameSize)
         {
         case SMALL:
             return 9;
@@ -49,4 +49,19 @@ void getGameSize(t_size size, bool isRow)
             break;
         }
     }   
+}
+
+int getTotalMineCount()
+{
+    switch (universalGameSize)
+    {
+        case SMALL:
+            return 10;
+        case NORMAL:
+            return 40;
+        case LARGE:
+            return 99;
+        default:
+            break;
+    }
 }

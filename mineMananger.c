@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include "mineMananger.h"
 
-char spaceCharacterRep(t_tile tile)
+char getTileGraphic(t_tile tile)
 {
     if(tile.hasFlag)
     {

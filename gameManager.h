@@ -4,7 +4,7 @@
 
 typedef enum gameMode
 {
-    NORMAL,
+    STANDARD,
 }t_mode;
 
 typedef enum gameSize
@@ -14,3 +14,13 @@ typedef enum gameSize
     LARGE,
     GIANT
 }t_size;
+
+void setGameMode(t_mode mode);
+
+t_mode getGameMode();
+
+void setGameSize(t_size size);
+
+int getGameSize(bool isRow);
+
+int getTotalMineCount();

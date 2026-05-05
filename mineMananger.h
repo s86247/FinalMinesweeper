@@ -12,14 +12,12 @@ typedef enum typeSpace
 typedef struct normalTile
 {
     t_space spaceType; 
-    int row;
-    int col;
     int minesAdjacent;
     bool isMine;
     bool hasFlag;
 }t_tile;
 
-char spaceCharacterRep(t_tile tile);
+char getTileGraphic(t_tile tile);
 
 int normalFindAdjacent(t_tile tile);
 
