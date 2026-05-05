@@ -4,4 +4,10 @@
 #include <gpm.h>
 
 
+
 void initializeInput();
+
+int get_input();
+
+struct notcurses* getNotCursesRefrence();
+
