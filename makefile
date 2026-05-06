@@ -12,7 +12,7 @@ TARGET = minesweeper
 
 # List your source files (just the names)
 SRCS_NAMES = mainMineSweeper.c boardManager.c gameManager.c \
-             inputManager.c mineMananger.c
+             inputManager.c tileMananger.c logicManager.c
 
 # Create full paths for sources (src/file.c)
 SRCS = $(addprefix $(SRC_DIR)/, $(SRCS_NAMES))

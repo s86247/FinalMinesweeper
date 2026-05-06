@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include "gameManager.h"
 
+/*Let the mine manager determine the total number of mi*/
+
 t_mode universalGameMode;
 t_size universalGameSize;
 

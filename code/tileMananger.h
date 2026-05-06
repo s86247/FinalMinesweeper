@@ -15,7 +15,6 @@ typedef struct normalTile
 {
     struct ncplane* tilePlane;
     t_space spaceType; 
-    int row, col;
     int minesAdjacent;
     bool isMine;
     bool hasFlag;
@@ -23,6 +22,6 @@ typedef struct normalTile
 
 char getTileGraphic(t_tile tile);
 
-int normalFindAdjacent(t_tile tile);
+//int normalFindAdjacent(t_tile tile);
 
 

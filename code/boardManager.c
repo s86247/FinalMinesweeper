@@ -1,11 +1,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
+#include <unistd.h>
 #include <notcurses/notcurses.h>
 
 #include"boardManager.h"
 
 
 t_tile **gameBoard;
+
+t_tile selectedTile;
 int selectedRow, selectedCol;
 
 struct ncplane *stdplane = NULL;
@@ -17,7 +21,6 @@ struct ncplane_options tileOptions = {
 void initializeBoard() 
 {
     stdplane = notcurses_stdplane(getNotCursesRefrence());
-    
     gameBoard = (t_tile **)malloc(getGameSize(true) * sizeof(t_tile));
     for(int i = 0; i < getGameSize(true);i++)
     {
@@ -34,9 +37,12 @@ void initializeBoard()
             gameBoard[i][j].tilePlane = ncplane_create(stdplane,  &tileOptions);
             ncplane_set_fg_rgb8(gameBoard[i][j].tilePlane, 0,0,0);
             gameBoard[i][j].spaceType = UNSEEN;
+            gameBoard[i][j].isMine = false;
             gameBoard[i][j].hasFlag = false;
         }
     }
+
+    selectedTile.tilePlane = NULL;
     selectedRow = getGameSize(true)/2;
     selectedCol = getGameSize(false)/2;
     updateSelectedTile(gameBoard[selectedRow][selectedCol]);
@@ -49,9 +55,9 @@ void freeBoard()
     free(gameBoard);
 }
 
-t_tile getTileAt(int row, int col)
+t_tile* getTileAt(int row, int col)
 {
-    return gameBoard[row][col];
+    return &gameBoard[row][col];
 }
 
 void printBoard()
@@ -60,10 +66,12 @@ void printBoard()
     {
         for(int j = 0; j < getGameSize(false); j++)
         {
-            ncplane_putstr_yx(gameBoard[i][j].tilePlane, 0, 0, "#");
+            char str[2]; 
+            str[0] = getTileGraphic(gameBoard[i][j]);
+            str[1] = '\0'; 
+            ncplane_putstr_yx(gameBoard[i][j].tilePlane, 0, 0, str);
         }
     }
-    notcurses_render(getNotCursesRefrence());
 }
 
 struct ncplane* getStandardPlane()
@@ -71,22 +79,25 @@ struct ncplane* getStandardPlane()
     return stdplane;
 }
 
-void moveCursor(int movement)
+t_tile* getSelectedTile()
+{
+    return &selectedTile;
+}
+
+void moveCursor(t_input movement)
 {
     switch (movement)
     {
-    case -1:
-        break;
-    case 1:
+    case LEFT:
         selectedCol--;
         break;
-    case 2:
+    case RIGHT:
         selectedCol++;
         break;
-    case 3:
+    case DOWN:
         selectedRow++;
         break;
-    case 4:
+    case UP:
         selectedRow--;
         break;
     default:
@@ -97,4 +108,36 @@ void moveCursor(int movement)
     else if(selectedRow>=getGameSize(true)){selectedRow--;}
     else if(selectedCol>=getGameSize(false)){selectedCol--;}
     else{updateSelectedTile(gameBoard[selectedRow][selectedCol]);}
+}
+
+
+void updateSelectedTile(t_tile tile)
+{
+    if(selectedTile.tilePlane != NULL) {ncplane_set_fg_rgb8(selectedTile.tilePlane, 0,0,0); }
+    selectedTile = tile;
+    ncplane_set_fg_rgb8(selectedTile.tilePlane, 255,255,255);
+}
+
+int generateMines()
+{
+    unsigned int seed = ((unsigned int)time(NULL) ^ (unsigned int)getpid());
+    srand(seed^ (unsigned int)getpid());
+    int minesPlaced = 0;
+    while(minesPlaced < getTotalMineCount())
+    {
+        for(int i = 0; i < getGameSize(true); i++)
+        {
+            for(int j = 0; j < getGameSize(false); j++)
+            {
+                int random = rand() % 10;
+                if(random == 3 && !gameBoard[i][j].isMine && !(i== selectedRow && j == selectedCol))
+                {
+                    gameBoard[i][j].isMine = true;
+                    minesPlaced ++;
+                    if(minesPlaced==getTotalMineCount()){return minesPlaced;}
+                }
+            }
+        }
+    }
+    return minesPlaced;
 }

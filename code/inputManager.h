@@ -4,14 +4,21 @@
 #include <gpm.h>
 
 
-#include "gameManager.h"
-#include "mineMananger.h"
 
+typedef enum inputType
+{
+    LEFT,
+    RIGHT,
+    DOWN,
+    UP,
+    FLAGGED,
+    CLEARED,
+    QUIT,
+    NONE
+}t_input;
 
 void initializeInput();
 
-int get_input();
+t_input get_input();
 
 struct notcurses* getNotCursesRefrence();
-
-void updateSelectedTile(t_tile tile);
