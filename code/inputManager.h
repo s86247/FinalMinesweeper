@@ -4,6 +4,9 @@
 #include <gpm.h>
 
 
+#include "gameManager.h"
+#include "mineMananger.h"
+
 
 void initializeInput();
 
@@ -11,3 +14,4 @@ int get_input();
 
 struct notcurses* getNotCursesRefrence();
 
+void updateSelectedTile(t_tile tile);

@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <notcurses/notcurses.h>
+
 
 typedef enum typeSpace
 {
@@ -11,7 +13,9 @@ typedef enum typeSpace
 
 typedef struct normalTile
 {
+    struct ncplane* tilePlane;
     t_space spaceType; 
+    int row, col;
     int minesAdjacent;
     bool isMine;
     bool hasFlag;
