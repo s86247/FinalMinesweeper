@@ -1,14 +1,16 @@
 #include <stdlib.h>
+#include <assert.h>
 #include <stdbool.h>
 #include <time.h>
 #include <unistd.h>
+#include <math.h>
 #include <notcurses/notcurses.h>
 
 #include"boardManager.h"
 
 
 t_tile **gameBoard;
-
+t_tile emptyTile;
 t_tile selectedTile;
 int selectedRow, selectedCol;
 
@@ -20,6 +22,8 @@ struct ncplane_options tileOptions = {
 
 void initializeBoard() 
 {
+    emptyTile.minesAdjacent = -1;
+    emptyTile.isMine = false;
     stdplane = notcurses_stdplane(getNotCursesRefrence());
     gameBoard = (t_tile **)malloc(getGameSize(true) * sizeof(t_tile));
     for(int i = 0; i < getGameSize(true);i++)
@@ -36,6 +40,7 @@ void initializeBoard()
 
             gameBoard[i][j].tilePlane = ncplane_create(stdplane,  &tileOptions);
             ncplane_set_fg_rgb8(gameBoard[i][j].tilePlane, 0,0,0);
+            gameBoard[i][j].minesAdjacent = 0;
             gameBoard[i][j].spaceType = UNSEEN;
             gameBoard[i][j].isMine = false;
             gameBoard[i][j].hasFlag = false;
@@ -53,11 +58,6 @@ void freeBoard()
 {
     for (int i = 0; i < getGameSize(true); i++) { free(gameBoard[i]); }
     free(gameBoard);
-}
-
-t_tile* getTileAt(int row, int col)
-{
-    return &gameBoard[row][col];
 }
 
 void printBoard()
@@ -79,10 +79,6 @@ struct ncplane* getStandardPlane()
     return stdplane;
 }
 
-t_tile* getSelectedTile()
-{
-    return &selectedTile;
-}
 
 void moveCursor(t_input movement)
 {
@@ -130,7 +126,7 @@ int generateMines()
             for(int j = 0; j < getGameSize(false); j++)
             {
                 int random = rand() % 10;
-                if(random == 3 && !gameBoard[i][j].isMine && !(i== selectedRow && j == selectedCol))
+                if(random == 3 && !gameBoard[i][j].isMine && !(i== selectedRow && j == selectedCol)&& getTileDistance(i,j,selectedRow,selectedCol) >1)
                 {
                     gameBoard[i][j].isMine = true;
                     minesPlaced ++;
@@ -140,4 +136,47 @@ int generateMines()
         }
     }
     return minesPlaced;
+}
+
+int getTileDistance(int row1, int col1, int row2, int col2)
+{
+    return(sqrt(pow(row1 - row2, 2) + pow(col1 - col2, 2)));
+
+}
+
+t_tile getTileRelative(int row, int col)
+{
+    if(!isInBounds(selectedRow+row,selectedCol+col)){return emptyTile;};
+    return gameBoard[selectedRow+row][selectedCol+col];
+}
+
+void changeTileSpaceTypeRelative(int row, int col, t_space space)
+{
+    if(!isInBounds(selectedRow+row,selectedCol+col)){return;}
+    else{gameBoard[selectedRow+row][selectedCol+col].spaceType = space;}
+}
+
+void setMinesAdjacentRelative(int row, int col, int mines)
+{
+    if(!isInBounds(selectedRow+row,selectedCol+col)){return;}
+    else{gameBoard[selectedRow+row][selectedCol+col].minesAdjacent = mines;}
+}
+
+bool isInBounds(int row, int col)
+{
+    if(row >= getGameSize(true)||col >= getGameSize(false) ||row < 0||col < 0) {return false;}
+    else {return true;}
+}
+
+int takeMineCount()
+{
+    int mineCount;
+    for(int i = 0; i < getGameSize(true); i++)
+        {
+            for(int j = 0; j < getGameSize(false); j++)
+            {
+                if(gameBoard[i][j].isMine && gameBoard[i][j].spaceType == FLAGGED){mineCount++;}
+            }
+        }
+    return mineCount;
 }

@@ -1,6 +1,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+typedef enum gameState
+{
+    MENU,
+    WON,
+    LOST,
+    PLAYING
+}t_state;
 
 typedef enum gameMode
 {
@@ -14,6 +21,10 @@ typedef enum gameSize
     LARGE,
     GIANT
 }t_size;
+
+void setGameState(t_state state);
+
+t_state getGameState();
 
 void setGameMode(t_mode mode);
 

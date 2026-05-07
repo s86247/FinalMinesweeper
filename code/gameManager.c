@@ -4,8 +4,19 @@
 
 /*Let the mine manager determine the total number of mi*/
 
+t_state universalGameState;
 t_mode universalGameMode;
 t_size universalGameSize;
+
+void setGameState(t_state state)
+{
+    universalGameState = state;
+}
+
+t_state getGameState()
+{
+    return universalGameState;
+}
 
 void setGameMode(t_mode mode)
 {

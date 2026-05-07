@@ -7,3 +7,7 @@
 void initializeLogic();
 
 void affectTile(t_input input);
+
+void gameOver();
+
+void reveal(int rowOffset, int colOffset);

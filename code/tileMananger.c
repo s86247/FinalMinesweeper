@@ -2,8 +2,11 @@
 #include <stdbool.h>
 #include "tileMananger.h"
 
+bool haveLost = false;
+
 char getTileGraphic(t_tile tile)
 {
+
     if(tile.hasFlag)
     {
         return 'F';
@@ -13,9 +16,9 @@ char getTileGraphic(t_tile tile)
     case BLANK:
         return '-';
     case HELPER:
-        return (char)tile.minesAdjacent; 
+        return (char)(tile.minesAdjacent)+'0'; 
     case UNSEEN:
-        if(tile.isMine){return 'M';}
+        if(tile.isMine && haveLost){return 'M';}
         else{return '#';}
     default:
         break;
