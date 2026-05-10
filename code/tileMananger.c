@@ -26,7 +26,23 @@ char getTileGraphic(t_tile tile)
 uint32_t getTileColor(t_tile tile)
 {
     uint8_t r = 0, g = 11, b = 11;
-    if(tile.spaceType == UNSEEN || tile.spaceType == BLANK)
+
+    if(getGameMode() == CHESS)
+    {
+        if(tile.isBlack)
+        {
+            r=0;
+            g=0;
+            b=0;
+        }
+        else
+        {
+            r=255;
+            g=255;
+            b=255;
+        }
+    }
+    else if(tile.spaceType == UNSEEN || tile.spaceType == BLANK)
     {
         r = 0;
         g = 0;
@@ -35,8 +51,8 @@ uint32_t getTileColor(t_tile tile)
     else if(tile.spaceType == FLAG){b=255;}
     else if(tile.spaceType==HELPER)
     {
-        if(r<240){r = 50 * tile.minesAdjacent;}
-        if(g>10){g = 255 - (50 * tile.minesAdjacent);}
+        if(r<240){r = 60 * tile.minesAdjacent;}
+        if(g>10){g = 255 - (40 * tile.minesAdjacent);}
         if(b>10){b = 155 - (50 * tile.minesAdjacent);}
     }
 

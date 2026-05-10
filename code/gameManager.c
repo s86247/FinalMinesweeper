@@ -4,6 +4,7 @@
 
 /*Let the mine manager determine the total number of mi*/
 
+
 t_state universalGameState;
 t_mode universalGameMode;
 t_size universalGameSize;
@@ -72,6 +73,12 @@ int getGameSize(bool isRow)
         }
     }   
 }
+
+t_size getUniversalGameSize()
+{
+    return universalGameSize;
+}
+
 
 int getTotalMineCount()
 {

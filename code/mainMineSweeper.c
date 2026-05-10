@@ -11,7 +11,13 @@ void setMenuSelected(int numSelected);
 void mainMenu(int index);
 void customSetUp();
 
+int smallBestTime = 31;
+int normalBestTime = 192;
+int largeBestTime = 689;
+
+
 bool isCustom = false;
+bool menuDone = false;
 
 
 struct ncplane *menuButtons[6];
@@ -21,9 +27,12 @@ struct ncplane_options menuOptions = {
     .cols = 150,
 };
 
+
+
 int main()
 {
     mainMenu(0);
+    if(!menuDone){return 0;}
     while(true)
     {
         setStandardPlane();
@@ -34,6 +43,33 @@ int main()
         while(true)
         {
             time_t endTime = time(NULL);
+            if(getGameMode() == TIME)
+            {
+                int totalSeconds = (int)difftime(endTime, startTime);
+                int timeToBeat;
+                switch (getUniversalGameSize())
+                {
+                case SMALL:
+                    if(getGameState() == WON){smallBestTime = totalSeconds;}
+                    timeToBeat = smallBestTime;
+                    break;
+                case NORMAL:
+                    if(getGameState() == WON){normalBestTime = totalSeconds;}
+                    timeToBeat = normalBestTime;
+                    break;
+                case LARGE:
+                    if(getGameState() == WON){largeBestTime = totalSeconds;}
+                    timeToBeat = largeBestTime;
+                    break;
+                default:
+                    break;
+                }
+                if(totalSeconds>=timeToBeat)
+                {
+                    setGameState(LOST);
+                    setIsTimeRelated(true);
+                }
+            }
             updateStats(startTime, endTime);
             printBoard();
             notcurses_render(getNotCursesRefrence());
@@ -75,7 +111,7 @@ void freeGame()
 {
     ncplane_erase(getStandardPlane());
     notcurses_stop(getNotCursesRefrence());
-    freeBoard();
+    if(menuDone){freeBoard();}
 }
 
 void mainMenu(int index)
@@ -100,7 +136,7 @@ void mainMenu(int index)
         case 0:
             ncplane_putstr_yx(menuButtons[0],0,0,"WELCOME TO MINESWEEPER");
             ncplane_putstr_yx(menuButtons[1],0,0,"GAME CONTROLS:");
-            ncplane_putstr_yx(menuButtons[2],0,0,"Press Z or C to clear tiles, press F to flag, press R to reset, use Arrow Keys or WSAD to move cursor");
+            ncplane_putstr_yx(menuButtons[2],0,0,"Press Z or C to clear tiles, press F to flag, press R to reset, use Arrow Keys or WSAD to move cursor, and ESC to quit");
             ncplane_putstr_yx(menuButtons[3],0,0,"MENU CONTROLS:");
             ncplane_putstr_yx(menuButtons[4],0,0,"Press Z or C confirm, press F to go back, use Arrow Keys or WSAD to move cursor");
             ncplane_putstr_yx(menuButtons[5],0,0,"Please confirm to continue");
@@ -121,12 +157,13 @@ void mainMenu(int index)
             if(menuChoice == CLEARED){setGameMode(optionChoice);}
             break;
         case 2:
-            numOptions = 4;
+            if(getGameMode() != TIME){numOptions = 4;}
+            else{numOptions = 3;}
             ncplane_putstr_yx(menuButtons[0],0,0,"PLEASE SELECT A GAME SIZE:");
             ncplane_putstr_yx(menuButtons[1],0,0,"SMALL:");
             ncplane_putstr_yx(menuButtons[2],0,0,"NORMAL");
             ncplane_putstr_yx(menuButtons[3],0,0,"LARGE:");
-            ncplane_putstr_yx(menuButtons[4],0,0,"CUSTOM");
+            if(getGameMode() != TIME){ncplane_putstr_yx(menuButtons[4],0,0,"CUSTOM");}
             setMenuSelected(optionChoice);
             notcurses_render(getNotCursesRefrence());
             menuChoice = get_input();
@@ -144,15 +181,25 @@ void mainMenu(int index)
             setGameSize(CUSTOM);
         }
         
-        if(menuChoice == FLAGGED && index > 0){index--;}
-        else if(menuChoice == CLEARED) {index++;}
+        if(menuChoice == FLAGGED && index > 0)
+        {
+            optionChoice = 0;
+            index--;
+        }
+        else if(menuChoice == CLEARED) 
+        {
+            optionChoice = 0;
+            index++;
+        }
         else if(menuChoice== DOWN && optionChoice+1 < numOptions){optionChoice++;}
         else if(menuChoice== UP && optionChoice-1 >= 0){optionChoice--;}
+        else if(menuChoice == QUIT){freeGame(); return;}
         if(index>=3)
         {
             ncplane_erase(getStandardPlane());
+            menuDone = true;
             return;
-            }
+        }
     }
 } 
 
@@ -185,6 +232,9 @@ void customSetUp()
             else if(input == DOWN && numThing-1>3){numThing--;}
             else if(input == CLEARED){param[i] = numThing; break;}
             int temp = numThing;
+            setupString[i][15] = ' ';
+            setupString[i][16] = ' ';
+            setupString[i][17] = ' '; 
             for(int j = 17; temp >0; j--) 
             {
                 setupString[i][j] = (char)temp%10+'0';

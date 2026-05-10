@@ -16,3 +16,5 @@ void reveal(int rowOffset, int colOffset);
 void updateStats(time_t start, time_t end);
 
 void resetScreen();
+
+void setIsTimeRelated(bool is);

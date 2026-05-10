@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <notcurses/notcurses.h>
 
-#include "gameManager.h"
 #include "tileMananger.h"
 #include "inputManager.h"
 
@@ -37,3 +36,5 @@ void setMinesAdjacentRelative(int row, int col, int mines);
 bool isInBounds(int row, int col);
 
 int takeMineCount();
+
+int getRealMines();

@@ -38,6 +38,8 @@ void setGameSize(t_size size);
 
 int getGameSize(bool isRow);
 
+t_size getUniversalGameSize();
+
 int getTotalMineCount();
 
 void setCustomParams(int row, int col, int mines);

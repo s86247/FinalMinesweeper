@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <notcurses/notcurses.h>
+#include "gameManager.h"
 
 
 typedef enum typeSpace
@@ -16,7 +17,10 @@ typedef struct normalTile
     struct ncplane* tilePlane;
     t_space spaceType; 
     int minesAdjacent;
+    int numMines;
     bool isMine;
+    bool isBlack;
+    
 }t_tile;
 
 char getTileGraphic(t_tile tile);

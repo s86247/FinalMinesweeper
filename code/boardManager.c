@@ -7,11 +7,18 @@
 
 #include"boardManager.h"
 
+/*
+Include secret mine count to print to top of logic screen
+25 for each mine after 1st add to count
+*/
 
 t_tile **gameBoard;
 t_tile emptyTile;
 t_tile selectedTile;
 int selectedRow, selectedCol;
+bool blackTile = true;
+
+int realNumMines;
 
 struct ncplane *stdplane = NULL;
 struct ncplane_options tileOptions = {
@@ -26,7 +33,8 @@ void setStandardPlane()
 
 void initializeBoard() 
 {
-    
+    if(getGameMode() == DOUBLEMINE){realNumMines=0;}
+    else{realNumMines = getTotalMineCount();}
     emptyTile.minesAdjacent = -1;
     emptyTile.isMine = false;
     gameBoard = (t_tile **)malloc(getGameSize(true) * sizeof(t_tile));
@@ -34,18 +42,29 @@ void initializeBoard()
     {
     gameBoard[i] = (t_tile *)malloc(getGameSize(false) * sizeof(t_tile));
     }
+    bool startingTile = blackTile;
     for(int i = 0; i < getGameSize(true); i++)
     {
         for(int j = 0; j < getGameSize(false); j++)
         {
             tileOptions.y = i + 2;
             tileOptions.x = j*2 + 6;
-
             gameBoard[i][j].tilePlane = ncplane_create(stdplane,  &tileOptions);
             ncplane_set_fg_rgb8(gameBoard[i][j].tilePlane, 0,0,0);
             gameBoard[i][j].minesAdjacent = 0;
             gameBoard[i][j].spaceType = UNSEEN;
             gameBoard[i][j].isMine = false;
+            gameBoard[i][j].numMines = 0;
+            if(getGameMode() == CHESS)
+            {
+                gameBoard[i][j].isBlack = blackTile;
+                blackTile = !blackTile;
+            }
+        }
+        if(getGameMode() == CHESS)
+        {
+            blackTile = !startingTile;
+            startingTile = !startingTile;
         }
     }
 
@@ -114,7 +133,8 @@ void updateSelectedTile(t_tile tile)
 {
     if(selectedTile.tilePlane != NULL) {ncplane_set_fg_rgb(selectedTile.tilePlane, getTileColor(selectedTile)); }
     selectedTile = tile;
-    ncplane_set_fg_rgb8(selectedTile.tilePlane, 255,255,255);
+    if(getGameMode() == CHESS){ncplane_set_fg_rgb8(selectedTile.tilePlane, 150,0,0);}
+    else{ncplane_set_fg_rgb8(selectedTile.tilePlane, 255,255,255);}
 }
 
 int generateMines()
@@ -129,10 +149,20 @@ int generateMines()
             for(int j = 0; j < getGameSize(false); j++)
             {
                 int random = rand() % 10;
-                if(random == 3 && !gameBoard[i][j].isMine && !(i== selectedRow && j == selectedCol)&&(getGameMode() == CUSTOM || getTileDistance(i,j,selectedRow,selectedCol) >1))
+                if(random == 3 && !gameBoard[i][j].isMine && !(i== selectedRow && j == selectedCol)&&(getUniversalGameSize() == CUSTOM || getTileDistance(i,j,selectedRow,selectedCol) >1))
                 {
                     gameBoard[i][j].isMine = true;
                     minesPlaced ++;
+                    if(getGameMode() == DOUBLEMINE)
+                    {
+                        while(true)
+                        {
+                            realNumMines++;
+                            gameBoard[i][j].numMines++;
+                            random = rand() % 10;
+                            if(random < 8){break;}
+                        }
+                    }
                     if(minesPlaced==getTotalMineCount()){return minesPlaced;}
                 }
             }
@@ -182,4 +212,9 @@ int takeMineCount()
             }
         }
     return mineCount;
+}
+
+int getRealMines()
+{
+    return realNumMines;
 }
