@@ -14,6 +14,7 @@ typedef enum inputType
     FLAGGED,
     CLEARED,
     QUIT,
+    RESTART,
     NONE
 }t_input;
 

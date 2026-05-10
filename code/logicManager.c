@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <notcurses/notcurses.h>
+
+
 #include "logicManager.h"
 
 
@@ -11,7 +13,7 @@ char str[13] ={"Num Mines:00\0"};
 struct ncplane *statsPlane = NULL;
 
 struct ncplane_options statsOptions = {
-    .rows = 2,
+    .rows = 4,
     .cols = 15,
 };
 
@@ -20,7 +22,9 @@ void initializeLogic()
     numMinesLeft = getTotalMineCount();
     firstSpaceCleared = false;
     statsPlane = ncplane_create(getStandardPlane(),  &statsOptions);
-    ncplane_move_yx(statsPlane, 0, getGameSize(false)*2);
+    ncplane_move_yx(statsPlane, 2, getGameSize(false)*2+6);
+    str[10]= (char)(numMinesLeft/10)+'0';
+    str[11]= (char)(numMinesLeft%10)+'0';
     ncplane_putstr_yx(statsPlane, 0, 0, str);
 }
 
@@ -31,24 +35,34 @@ void affectTile(t_input input)
         firstSpaceCleared = true;
         generateMines();
     }
-    if(input == CLEARED && numMinesLeft >0)
+
+    if (getTileRelative(0,0).spaceType == BLANK || getTileRelative(0,0).spaceType == HELPER){return;}
+    else if(input == CLEARED && numMinesLeft >0)
     {
         if(getTileRelative(0,0).isMine){setGameState(LOST);}
         else if(getTileRelative(0,0).spaceType == UNSEEN){reveal(0,0);}
     }
-    else if(input == FLAGGED && getTileRelative(0,0).spaceType != FLAGGED)
+    else if(input == FLAGGED)
     {
-        changeTileSpaceTypeRelative(0,0, FLAGGED);
-        numMinesLeft --;
+        if( getTileRelative(0,0).spaceType == FLAG)
+        {
+            changeTileSpaceTypeRelative(0,0, UNSEEN);
+            numMinesLeft ++;
+        }
+        else if(numMinesLeft >0)
+        {
+            changeTileSpaceTypeRelative(0,0, FLAG);
+            numMinesLeft --;
+        }
     }
     else
     {
         return;
     }
     
-    if(numMinesLeft < 1)
+    if(numMinesLeft <= 0)
     {
-        if(getTotalMineCount == takeMineCount()) {setGameState(WON);}
+        if(getTotalMineCount() == takeMineCount()) {setGameState(WON);}
     }
     str[10]= (char)(numMinesLeft/10)+'0';
     str[11]= (char)(numMinesLeft%10)+'0';
@@ -73,8 +87,8 @@ void reveal(int rowOffset, int colOffset)
     }
     if(numMinesAdj>0)
     {
-        changeTileSpaceTypeRelative(rowOffset,colOffset,HELPER);
         setMinesAdjacentRelative(rowOffset,colOffset,numMinesAdj);
+        changeTileSpaceTypeRelative(rowOffset,colOffset,HELPER);
     }
     else
     {
@@ -92,4 +106,33 @@ void reveal(int rowOffset, int colOffset)
             }
         }
     }
+}
+
+void updateStats(time_t start, time_t end)
+{
+    if(getGameState() == WON){ncplane_putstr_yx(statsPlane, 3, 0, "YOU WON :)");}
+    else if(getGameState() == LOST){ncplane_putstr_yx(statsPlane, 3, 0, "YOU LOST :(");}
+    else 
+    {
+        int totalSeconds = (int)difftime(end, start);
+
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+
+        char timeStr[15]  = "Time: 00:00";
+
+        timeStr[6]= (char)(minutes/10)+'0';
+        timeStr[7]= (char)(minutes%10)+'0';
+
+        timeStr[9]= (char)(seconds/10)+'0';
+        timeStr[10]= (char)(seconds%10)+'0';
+
+        ncplane_putstr_yx(statsPlane, 2, 0, timeStr);
+    }
+}
+
+void resetScreen()
+{
+    ncplane_erase(getStandardPlane());
+    ncplane_erase(statsPlane);
 }

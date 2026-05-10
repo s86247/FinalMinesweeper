@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <assert.h>
 #include <stdbool.h>
 #include <time.h>
 #include <unistd.h>
@@ -20,30 +19,33 @@ struct ncplane_options tileOptions = {
     .cols = 2,
 };
 
+void setStandardPlane()
+{
+    stdplane = notcurses_stdplane(getNotCursesRefrence());
+}
+
 void initializeBoard() 
 {
+    
     emptyTile.minesAdjacent = -1;
     emptyTile.isMine = false;
-    stdplane = notcurses_stdplane(getNotCursesRefrence());
     gameBoard = (t_tile **)malloc(getGameSize(true) * sizeof(t_tile));
     for(int i = 0; i < getGameSize(true);i++)
     {
     gameBoard[i] = (t_tile *)malloc(getGameSize(false) * sizeof(t_tile));
     }
-
     for(int i = 0; i < getGameSize(true); i++)
     {
         for(int j = 0; j < getGameSize(false); j++)
         {
-            tileOptions.y = i;
-            tileOptions.x = j*2;
+            tileOptions.y = i + 2;
+            tileOptions.x = j*2 + 6;
 
             gameBoard[i][j].tilePlane = ncplane_create(stdplane,  &tileOptions);
             ncplane_set_fg_rgb8(gameBoard[i][j].tilePlane, 0,0,0);
             gameBoard[i][j].minesAdjacent = 0;
             gameBoard[i][j].spaceType = UNSEEN;
             gameBoard[i][j].isMine = false;
-            gameBoard[i][j].hasFlag = false;
         }
     }
 
@@ -70,6 +72,7 @@ void printBoard()
             str[0] = getTileGraphic(gameBoard[i][j]);
             str[1] = '\0'; 
             ncplane_putstr_yx(gameBoard[i][j].tilePlane, 0, 0, str);
+            if(!(i==selectedRow && j==selectedCol)){ncplane_set_fg_rgb(gameBoard[i][j].tilePlane, getTileColor(gameBoard[i][j]));}
         }
     }
 }
@@ -109,7 +112,7 @@ void moveCursor(t_input movement)
 
 void updateSelectedTile(t_tile tile)
 {
-    if(selectedTile.tilePlane != NULL) {ncplane_set_fg_rgb8(selectedTile.tilePlane, 0,0,0); }
+    if(selectedTile.tilePlane != NULL) {ncplane_set_fg_rgb(selectedTile.tilePlane, getTileColor(selectedTile)); }
     selectedTile = tile;
     ncplane_set_fg_rgb8(selectedTile.tilePlane, 255,255,255);
 }
@@ -126,7 +129,7 @@ int generateMines()
             for(int j = 0; j < getGameSize(false); j++)
             {
                 int random = rand() % 10;
-                if(random == 3 && !gameBoard[i][j].isMine && !(i== selectedRow && j == selectedCol)&& getTileDistance(i,j,selectedRow,selectedCol) >1)
+                if(random == 3 && !gameBoard[i][j].isMine && !(i== selectedRow && j == selectedCol)&&(getGameMode() == CUSTOM || getTileDistance(i,j,selectedRow,selectedCol) >1))
                 {
                     gameBoard[i][j].isMine = true;
                     minesPlaced ++;
@@ -170,12 +173,12 @@ bool isInBounds(int row, int col)
 
 int takeMineCount()
 {
-    int mineCount;
+    int mineCount = 0;
     for(int i = 0; i < getGameSize(true); i++)
         {
             for(int j = 0; j < getGameSize(false); j++)
             {
-                if(gameBoard[i][j].isMine && gameBoard[i][j].spaceType == FLAGGED){mineCount++;}
+                if(gameBoard[i][j].isMine && gameBoard[i][j].spaceType == FLAG){mineCount++;}
             }
         }
     return mineCount;

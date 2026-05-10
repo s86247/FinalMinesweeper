@@ -12,6 +12,10 @@ typedef enum gameState
 typedef enum gameMode
 {
     STANDARD,
+    CHESS,
+    LIAR,
+    DOUBLEMINE,
+    TIME
 }t_mode;
 
 typedef enum gameSize
@@ -19,7 +23,7 @@ typedef enum gameSize
     SMALL,
     NORMAL,
     LARGE,
-    GIANT
+    CUSTOM
 }t_size;
 
 void setGameState(t_state state);
@@ -35,3 +39,5 @@ void setGameSize(t_size size);
 int getGameSize(bool isRow);
 
 int getTotalMineCount();
+
+void setCustomParams(int row, int col, int mines);

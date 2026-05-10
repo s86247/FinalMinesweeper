@@ -38,6 +38,8 @@ t_input get_input()
             case 'f':
             case 'x':
                 return FLAGGED;
+            case 'r':
+                return RESTART;
             case NCKEY_ESC:
                 return QUIT;
             default:

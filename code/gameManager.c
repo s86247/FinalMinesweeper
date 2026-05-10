@@ -8,6 +8,11 @@ t_state universalGameState;
 t_mode universalGameMode;
 t_size universalGameSize;
 
+int customGameRows;
+int customGameCols;
+int customGameMines;
+
+
 void setGameState(t_state state)
 {
     universalGameState = state;
@@ -44,8 +49,10 @@ int getGameSize(bool isRow)
             return 16;
         case LARGE:
             return 30;
+        case CUSTOM:
+            return customGameCols;
         default:
-            break;
+            return 0;
         }
     }
     else
@@ -58,8 +65,10 @@ int getGameSize(bool isRow)
             return 16;
         case LARGE:
             return 16;
+        case CUSTOM:
+            return customGameCols;
         default:
-            break;
+            return 0;
         }
     }   
 }
@@ -74,7 +83,15 @@ int getTotalMineCount()
             return 40;
         case LARGE:
             return 99;
+        case CUSTOM:
+            return customGameMines;
         default:
             break;
     }
+}
+void setCustomParams(int row, int col, int mines)
+{
+    customGameRows = row;
+    customGameCols = col;
+    customGameMines = mines;
 }

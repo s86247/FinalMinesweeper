@@ -10,6 +10,8 @@ extern t_tile **gameBoard;
 
 extern t_tile selectedTile;
 
+void setStandardPlane();
+
 void initializeBoard();
 
 void freeBoard();

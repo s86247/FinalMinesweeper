@@ -17,10 +17,14 @@ typedef struct normalTile
     t_space spaceType; 
     int minesAdjacent;
     bool isMine;
-    bool hasFlag;
 }t_tile;
 
 char getTileGraphic(t_tile tile);
+
+uint32_t getTileColor(t_tile tile);
+
+
+void updateMinesShowing(bool lost);
 
 //int normalFindAdjacent(t_tile tile);
 
