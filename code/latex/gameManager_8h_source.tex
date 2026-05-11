@@ -1,0 +1,54 @@
+\doxysection{game\+Manager.\+h}
+\hypertarget{gameManager_8h_source}{}\label{gameManager_8h_source}\mbox{\hyperlink{gameManager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{gameManager_8h_aaf29bbe309504beb4cfec2481eacee62}{gameState}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ WON,}
+\DoxyCodeLine{00014\ \ \ \ \ LOST,}
+\DoxyCodeLine{00015\ \ \ \ \ PLAYING}
+\DoxyCodeLine{00016\ \}\mbox{\hyperlink{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}{t\_state}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{gameManager_8h_a115508efe199d81fdc8a4d76700c8e94}{gameMode}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ STANDARD,}
+\DoxyCodeLine{00022\ \ \ \ \ CHESS,}
+\DoxyCodeLine{00023\ \ \ \ \ LIAR,}
+\DoxyCodeLine{00024\ \ \ \ \ DOUBLEMINE,}
+\DoxyCodeLine{00025\ \ \ \ \ TIME}
+\DoxyCodeLine{00026\ \}\mbox{\hyperlink{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}{t\_mode}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{gameManager_8h_aff5b67b39aefea486e9cc29d0c2b4730}{gameSize}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ SMALL,}
+\DoxyCodeLine{00032\ \ \ \ \ NORMAL,}
+\DoxyCodeLine{00033\ \ \ \ \ LARGE,}
+\DoxyCodeLine{00034\ \ \ \ \ CUSTOM}
+\DoxyCodeLine{00035\ \}\mbox{\hyperlink{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}{t\_size}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameManager_8h_ae8869f488b0ad6b8c8b2695d6def4811}{setGameState}}(\mbox{\hyperlink{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}{t\_state}}\ state);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \mbox{\hyperlink{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}{t\_state}}\ \mbox{\hyperlink{gameManager_8h_a5d4045665a7ea26a0b091313b4caf49a}{getGameState}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameManager_8h_a699e2052e57e3889871d94d9165cfef6}{setGameMode}}(\mbox{\hyperlink{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}{t\_mode}}\ mode);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \mbox{\hyperlink{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}{t\_mode}}\ \mbox{\hyperlink{gameManager_8h_a7e284bcca25203f2acbe7909b601104e}{getGameMode}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameManager_8h_aee96642b7faeac661b2602a38a219ff8}{setGameSize}}(\mbox{\hyperlink{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}{t\_size}}\ size);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gameManager_8h_a4f1e534603726f7134a9608b6b94c10e}{getGameSize}}(\textcolor{keywordtype}{bool}\ isRow);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \mbox{\hyperlink{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}{t\_size}}\ \mbox{\hyperlink{gameManager_8h_ae1847492655c04ba98f4588de9a18523}{getUniversalGameSize}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gameManager_8h_a1882f673ee9170f9daa0fe8f340da6f8}{getTotalMineCount}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameManager_8h_a9da7d3f9c5d19aa28e949a4de2cfdc70}{setCustomParams}}(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col,\ \textcolor{keywordtype}{int}\ mines);}
+
+\end{DoxyCode}

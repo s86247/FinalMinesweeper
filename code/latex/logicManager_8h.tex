@@ -1,0 +1,90 @@
+\doxysection{logic\+Manager.\+h File Reference}
+\hypertarget{logicManager_8h}{}\label{logicManager_8h}\index{logicManager.h@{logicManager.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$notcurses/notcurses.\+h$>$}\newline
+{\ttfamily \#include "{}board\+Manager.\+h"{}}\newline
+Include dependency graph for logic\+Manager.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{logicManager_8h_a5d405070b1f6aa650105b0f23909f050}\label{logicManager_8h_a5d405070b1f6aa650105b0f23909f050} 
+void {\bfseries initialize\+Logic} ()
+\begin{DoxyCompactList}\small\item\em Initalized the logic\+Manager with default values and sets up the stats screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{logicManager_8h_a193b10835462b6172a08e760b3450469}{affect\+Tile}} (\mbox{\hyperlink{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}{t\+\_\+input}} input)
+\begin{DoxyCompactList}\small\item\em Affects the selected tile in board\+Manager according to the users input and preexisting conditions. Also updates mines left on the stats screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{logicManager_8h_a0d302ef1fe4579ee88c4908b389ac5fc}{reveal}} (int row\+Offset, int col\+Offset)
+\begin{DoxyCompactList}\small\item\em Reveals the tile at the given offset from the selected tile and if blank recursivley reveals all adjacent blank tile. If not blank it calculates the number of adjacent mines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{logicManager_8h_a5ab720da68ad40c4430cf66289ea6002}{update\+Stats}} (time\+\_\+t start, time\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Updates the time elapsed in the game and a message if the user has won or lost. \end{DoxyCompactList}\item 
+\Hypertarget{logicManager_8h_ae56ad795427d7a17af1755baeca56ca8}\label{logicManager_8h_ae56ad795427d7a17af1755baeca56ca8} 
+void {\bfseries reset\+Screen} ()
+\begin{DoxyCompactList}\small\item\em Resets the screen once the user has finished with the menu. \end{DoxyCompactList}\item 
+\Hypertarget{logicManager_8h_a65af0aa59d6a9e7eb338635958243a3e}\label{logicManager_8h_a65af0aa59d6a9e7eb338635958243a3e} 
+void {\bfseries set\+Is\+Time\+Related} (bool is)
+\begin{DoxyCompactList}\small\item\em Updates a common bool to tell \doxylink{logicManager_8h_a5ab720da68ad40c4430cf66289ea6002}{update\+Stats()} if the win or loss was time related in time trial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tristan Risi, 900367080 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/10/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{logicManager_8h_a193b10835462b6172a08e760b3450469}\label{logicManager_8h_a193b10835462b6172a08e760b3450469} 
+\index{logicManager.h@{logicManager.h}!affectTile@{affectTile}}
+\index{affectTile@{affectTile}!logicManager.h@{logicManager.h}}
+\doxysubsubsection{\texorpdfstring{affectTile()}{affectTile()}}
+{\footnotesize\ttfamily void affect\+Tile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}{t\+\_\+input}}}]{input }\end{DoxyParamCaption})}
+
+
+
+Affects the selected tile in board\+Manager according to the users input and preexisting conditions. Also updates mines left on the stats screen. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input} & The t\+\_\+input representation of how the user wishes to affect a tile (Clear, flag) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{logicManager_8h_a0d302ef1fe4579ee88c4908b389ac5fc}\label{logicManager_8h_a0d302ef1fe4579ee88c4908b389ac5fc} 
+\index{logicManager.h@{logicManager.h}!reveal@{reveal}}
+\index{reveal@{reveal}!logicManager.h@{logicManager.h}}
+\doxysubsubsection{\texorpdfstring{reveal()}{reveal()}}
+{\footnotesize\ttfamily void reveal (\begin{DoxyParamCaption}\item[{int}]{row\+Offset,  }\item[{int}]{col\+Offset }\end{DoxyParamCaption})}
+
+
+
+Reveals the tile at the given offset from the selected tile and if blank recursivley reveals all adjacent blank tile. If not blank it calculates the number of adjacent mines. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em row\+Offset} & The row offset from the selected tile \\
+\hline
+\mbox{\texttt{ in}}  & {\em row\+Offset} & The col offset from the selected tile \\
+\hline
+\end{DoxyParams}
+\Hypertarget{logicManager_8h_a5ab720da68ad40c4430cf66289ea6002}\label{logicManager_8h_a5ab720da68ad40c4430cf66289ea6002} 
+\index{logicManager.h@{logicManager.h}!updateStats@{updateStats}}
+\index{updateStats@{updateStats}!logicManager.h@{logicManager.h}}
+\doxysubsubsection{\texorpdfstring{updateStats()}{updateStats()}}
+{\footnotesize\ttfamily void update\+Stats (\begin{DoxyParamCaption}\item[{time\+\_\+t}]{start,  }\item[{time\+\_\+t}]{end }\end{DoxyParamCaption})}
+
+
+
+Updates the time elapsed in the game and a message if the user has won or lost. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em start} & The time when the user started the game \\
+\hline
+\mbox{\texttt{ in}}  & {\em end} & The last time the user inputted something \\
+\hline
+\end{DoxyParams}

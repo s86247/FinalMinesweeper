@@ -1,0 +1,36 @@
+\doxysection{tile\+Mananger.\+h}
+\hypertarget{tileMananger_8h_source}{}\label{tileMananger_8h_source}\mbox{\hyperlink{tileMananger_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <notcurses/notcurses.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gameManager_8h}{gameManager.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{tileMananger_8h_ac62d5d3050448bc6ef6a2f594d22d350}{typeSpace}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ BLANK,}
+\DoxyCodeLine{00017\ \ \ \ \ HELPER,}
+\DoxyCodeLine{00018\ \ \ \ \ UNSEEN,}
+\DoxyCodeLine{00019\ \ \ \ \ FLAG}
+\DoxyCodeLine{00020\ \}\mbox{\hyperlink{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe}{t\_space}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnormalTile}{normalTile}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }ncplane*\ \mbox{\hyperlink{structnormalTile_af9756f9caca9cf2795caa9f5643a75e0}{tilePlane}};\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe}{t\_space}}\ \mbox{\hyperlink{structnormalTile_a091ed90aae73517893ba12e975ba33e5}{spaceType}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnormalTile_ab572ac0a3f8f84e6df3bc4e56e660ef2}{minesAdjacent}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structnormalTile_a809b49c4397d9d19a9a7d1934731207d}{numMines}};\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structnormalTile_a52769fe849277d1624815864eed893db}{isMine}};\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structnormalTile_ab8f0937b77faa97afee0722c2ef84a5a}{isBlack}};\ }
+\DoxyCodeLine{00033\ \}\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\_tile}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{tileMananger_8h_a8c97020719e2f02990631d48df376104}{getTileGraphic}}(\mbox{\hyperlink{structnormalTile}{t\_tile}}\ tile);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00049\ uint32\_t\ \mbox{\hyperlink{tileMananger_8h_a84a06f98f0d2589f720c6e67920218fd}{getTileColor}}(\mbox{\hyperlink{structnormalTile}{t\_tile}}\ tile);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tileMananger_8h_a8b90c1271b330ca7d31c487935aebac9}{updateMinesShowing}}(\textcolor{keywordtype}{bool}\ lost);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ }
+
+\end{DoxyCode}

@@ -1,0 +1,107 @@
+\doxysection{main\+Mine\+Sweeper.\+c File Reference}
+\hypertarget{mainMineSweeper_8c}{}\label{mainMineSweeper_8c}\index{mainMineSweeper.c@{mainMineSweeper.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$notcurses/notcurses.\+h$>$}\newline
+{\ttfamily \#include "{}logic\+Manager.\+h"{}}\newline
+Include dependency graph for main\+Mine\+Sweeper.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mainMineSweeper_8c_a3f1f2de8ad16ee00d98289cf4270761f}\label{mainMineSweeper_8c_a3f1f2de8ad16ee00d98289cf4270761f} 
+void {\bfseries free\+Game} ()
+\begin{DoxyCompactList}\small\item\em Frees all of the memory stored by the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mainMineSweeper_8c_af95278ae208c280edc52643175653868}{main\+Menu}} (int index)
+\begin{DoxyCompactList}\small\item\em The general code handling the main menu and getting the game parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mainMineSweeper_8c_a691d3acb1aa7fd21bc9836d027bf3f14}{set\+Menu\+Selected}} (int num\+Selected)
+\begin{DoxyCompactList}\small\item\em Highlights the selected option on the menu. \end{DoxyCompactList}\item 
+\Hypertarget{mainMineSweeper_8c_acc03bb1efdfc2df653e749b2e3abb5cd}\label{mainMineSweeper_8c_acc03bb1efdfc2df653e749b2e3abb5cd} 
+void {\bfseries custom\+Set\+Up} ()
+\begin{DoxyCompactList}\small\item\em A seperate menu allowing the user to configure a custom game. \end{DoxyCompactList}\item 
+\Hypertarget{mainMineSweeper_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{mainMineSweeper_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mainMineSweeper_8c_ac88762e698498d87238f3b1e5d2d984a}\label{mainMineSweeper_8c_ac88762e698498d87238f3b1e5d2d984a} 
+struct ncplane \texorpdfstring{$\ast$}{*} {\bfseries menu\+Buttons} \mbox{[}6\mbox{]}
+\item 
+\Hypertarget{mainMineSweeper_8c_a50416ce01baeb27840410e72a77eaefd}\label{mainMineSweeper_8c_a50416ce01baeb27840410e72a77eaefd} 
+int {\bfseries small\+Best\+Time} = 31
+\item 
+\Hypertarget{mainMineSweeper_8c_a06c20fe9f41f425d0941545bf715d6a0}\label{mainMineSweeper_8c_a06c20fe9f41f425d0941545bf715d6a0} 
+int {\bfseries normal\+Best\+Time} = 192
+\item 
+\Hypertarget{mainMineSweeper_8c_a6b2073d892dfd40c938573c104adf5de}\label{mainMineSweeper_8c_a6b2073d892dfd40c938573c104adf5de} 
+int {\bfseries large\+Best\+Time} = 689
+\item 
+\Hypertarget{mainMineSweeper_8c_a22003b6e47d828f4faf120e265280538}\label{mainMineSweeper_8c_a22003b6e47d828f4faf120e265280538} 
+bool {\bfseries is\+Custom} = false
+\item 
+\Hypertarget{mainMineSweeper_8c_afba898a0e30ad8e98f2c22ab5d8dc312}\label{mainMineSweeper_8c_afba898a0e30ad8e98f2c22ab5d8dc312} 
+bool {\bfseries menu\+Done} = false
+\item 
+struct ncplane\+\_\+options \mbox{\hyperlink{mainMineSweeper_8c_ae22146cd991e8cc76bf57ffc234639a2}{menu\+Options}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tristan Risi, 900367080 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/10/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mainMineSweeper_8c_af95278ae208c280edc52643175653868}\label{mainMineSweeper_8c_af95278ae208c280edc52643175653868} 
+\index{mainMineSweeper.c@{mainMineSweeper.c}!mainMenu@{mainMenu}}
+\index{mainMenu@{mainMenu}!mainMineSweeper.c@{mainMineSweeper.c}}
+\doxysubsubsection{\texorpdfstring{mainMenu()}{mainMenu()}}
+{\footnotesize\ttfamily void main\+Menu (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+The general code handling the main menu and getting the game parameters. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em index} & The index of the menu screen the player is on \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mainMineSweeper_8c_a691d3acb1aa7fd21bc9836d027bf3f14}\label{mainMineSweeper_8c_a691d3acb1aa7fd21bc9836d027bf3f14} 
+\index{mainMineSweeper.c@{mainMineSweeper.c}!setMenuSelected@{setMenuSelected}}
+\index{setMenuSelected@{setMenuSelected}!mainMineSweeper.c@{mainMineSweeper.c}}
+\doxysubsubsection{\texorpdfstring{setMenuSelected()}{setMenuSelected()}}
+{\footnotesize\ttfamily void set\+Menu\+Selected (\begin{DoxyParamCaption}\item[{int}]{num\+Selected }\end{DoxyParamCaption})}
+
+
+
+Highlights the selected option on the menu. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em num\+Selected} & An int representing the menu selection choice \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{mainMineSweeper_8c_ae22146cd991e8cc76bf57ffc234639a2}\label{mainMineSweeper_8c_ae22146cd991e8cc76bf57ffc234639a2} 
+\index{mainMineSweeper.c@{mainMineSweeper.c}!menuOptions@{menuOptions}}
+\index{menuOptions@{menuOptions}!mainMineSweeper.c@{mainMineSweeper.c}}
+\doxysubsubsection{\texorpdfstring{menuOptions}{menuOptions}}
+{\footnotesize\ttfamily struct ncplane\+\_\+options menu\+Options}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .rows\ =\ 1,}
+\DoxyCodeLine{\ \ \ \ .cols\ =\ 100,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

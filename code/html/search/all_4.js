@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['gamemanager_2ec_0',['gameManager.c',['../gameManager_8c.html',1,'']]],
+  ['gamemanager_2eh_1',['gameManager.h',['../gameManager_8h.html',1,'']]],
+  ['gamemode_2',['gameMode',['../gameManager_8h.html#a115508efe199d81fdc8a4d76700c8e94',1,'gameManager.h']]],
+  ['gamesize_3',['gameSize',['../gameManager_8h.html#aff5b67b39aefea486e9cc29d0c2b4730',1,'gameManager.h']]],
+  ['gamestate_4',['gameState',['../gameManager_8h.html#aaf29bbe309504beb4cfec2481eacee62',1,'gameManager.h']]],
+  ['generatemines_5',['generatemines',['../boardManager_8c.html#a6c27cb5eafc7689ecd306747085f4211',1,'generateMines():&#160;boardManager.c'],['../boardManager_8h.html#a6c27cb5eafc7689ecd306747085f4211',1,'generateMines():&#160;boardManager.c']]],
+  ['get_5finput_6',['get_input',['../inputManager_8c.html#af34cced9e7aae93cf3af9b54df8fa29b',1,'get_input():&#160;inputManager.c'],['../inputManager_8h.html#af34cced9e7aae93cf3af9b54df8fa29b',1,'get_input():&#160;inputManager.c']]],
+  ['getgamemode_7',['getgamemode',['../gameManager_8c.html#a7e284bcca25203f2acbe7909b601104e',1,'getGameMode():&#160;gameManager.c'],['../gameManager_8h.html#a7e284bcca25203f2acbe7909b601104e',1,'getGameMode():&#160;gameManager.c']]],
+  ['getgamesize_8',['getgamesize',['../gameManager_8c.html#a4f1e534603726f7134a9608b6b94c10e',1,'getGameSize(bool isRow):&#160;gameManager.c'],['../gameManager_8h.html#a4f1e534603726f7134a9608b6b94c10e',1,'getGameSize(bool isRow):&#160;gameManager.c']]],
+  ['getgamestate_9',['getgamestate',['../gameManager_8c.html#a5d4045665a7ea26a0b091313b4caf49a',1,'getGameState():&#160;gameManager.c'],['../gameManager_8h.html#a5d4045665a7ea26a0b091313b4caf49a',1,'getGameState():&#160;gameManager.c']]],
+  ['getnotcursesrefrence_10',['getnotcursesrefrence',['../inputManager_8h.html#ab1092e9d1ed4f4cdb34d74b716761e4f',1,'getNotCursesRefrence():&#160;inputManager.c'],['../inputManager_8c.html#ab1092e9d1ed4f4cdb34d74b716761e4f',1,'getNotCursesRefrence():&#160;inputManager.c']]],
+  ['getrealmines_11',['getrealmines',['../boardManager_8c.html#ae36cfd9cc0d9e558496abf90694cc664',1,'getRealMines():&#160;boardManager.c'],['../boardManager_8h.html#ae36cfd9cc0d9e558496abf90694cc664',1,'getRealMines():&#160;boardManager.c']]],
+  ['getstandardplane_12',['getstandardplane',['../boardManager_8c.html#ad86ca4c74e3ee199927842569b9c9672',1,'getStandardPlane():&#160;boardManager.c'],['../boardManager_8h.html#ad86ca4c74e3ee199927842569b9c9672',1,'getStandardPlane():&#160;boardManager.c']]],
+  ['gettilecolor_13',['gettilecolor',['../tileMananger_8c.html#a84a06f98f0d2589f720c6e67920218fd',1,'getTileColor(t_tile tile):&#160;tileMananger.c'],['../tileMananger_8h.html#a84a06f98f0d2589f720c6e67920218fd',1,'getTileColor(t_tile tile):&#160;tileMananger.c']]],
+  ['gettiledistance_14',['gettiledistance',['../boardManager_8h.html#a12e9046a29150fbab450f62b62d63f17',1,'getTileDistance(int row1, int col1, int row2, int col2):&#160;boardManager.c'],['../boardManager_8c.html#a12e9046a29150fbab450f62b62d63f17',1,'getTileDistance(int row1, int col1, int row2, int col2):&#160;boardManager.c']]],
+  ['gettilegraphic_15',['gettilegraphic',['../tileMananger_8c.html#a8c97020719e2f02990631d48df376104',1,'getTileGraphic(t_tile tile):&#160;tileMananger.c'],['../tileMananger_8h.html#a8c97020719e2f02990631d48df376104',1,'getTileGraphic(t_tile tile):&#160;tileMananger.c']]],
+  ['gettilerelative_16',['gettilerelative',['../boardManager_8c.html#a8947f47e5aa6e1e213d5f3eaa7360b50',1,'getTileRelative(int row, int col):&#160;boardManager.c'],['../boardManager_8h.html#a8947f47e5aa6e1e213d5f3eaa7360b50',1,'getTileRelative(int row, int col):&#160;boardManager.c']]],
+  ['gettotalminecount_17',['gettotalminecount',['../gameManager_8c.html#a1882f673ee9170f9daa0fe8f340da6f8',1,'getTotalMineCount():&#160;gameManager.c'],['../gameManager_8h.html#a1882f673ee9170f9daa0fe8f340da6f8',1,'getTotalMineCount():&#160;gameManager.c']]],
+  ['getuniversalgamesize_18',['getuniversalgamesize',['../gameManager_8c.html#ae1847492655c04ba98f4588de9a18523',1,'getUniversalGameSize():&#160;gameManager.c'],['../gameManager_8h.html#ae1847492655c04ba98f4588de9a18523',1,'getUniversalGameSize():&#160;gameManager.c']]]
+];

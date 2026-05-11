@@ -1,0 +1,89 @@
+\doxysection{tile\+Mananger.\+c File Reference}
+\hypertarget{tileMananger_8c}{}\label{tileMananger_8c}\index{tileMananger.c@{tileMananger.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}tile\+Mananger.\+h"{}}\newline
+Include dependency graph for tile\+Mananger.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{tileMananger_8c_a8c97020719e2f02990631d48df376104}{get\+Tile\+Graphic}} (\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} tile)
+\begin{DoxyCompactList}\small\item\em Finds the character representation of a tile based on the game mode and its parameters. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{tileMananger_8c_a84a06f98f0d2589f720c6e67920218fd}{get\+Tile\+Color}} (\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} tile)
+\begin{DoxyCompactList}\small\item\em Finds the color of a tile based on the game mode and its parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tileMananger_8c_a8b90c1271b330ca7d31c487935aebac9}{update\+Mines\+Showing}} (bool lost)
+\begin{DoxyCompactList}\small\item\em Lets get\+Tile\+Graphic know to show mines via updating a common boolean. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tileMananger_8c_a848a6325a684abff63b143c64d876b54}\label{tileMananger_8c_a848a6325a684abff63b143c64d876b54} 
+bool {\bfseries have\+Lost} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tristan Risi, 900367080 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/10/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tileMananger_8c_a84a06f98f0d2589f720c6e67920218fd}\label{tileMananger_8c_a84a06f98f0d2589f720c6e67920218fd} 
+\index{tileMananger.c@{tileMananger.c}!getTileColor@{getTileColor}}
+\index{getTileColor@{getTileColor}!tileMananger.c@{tileMananger.c}}
+\doxysubsubsection{\texorpdfstring{getTileColor()}{getTileColor()}}
+{\footnotesize\ttfamily uint32\+\_\+t get\+Tile\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}}}]{tile }\end{DoxyParamCaption})}
+
+
+
+Finds the color of a tile based on the game mode and its parameters. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em tile} & The tile that gets checked to find its color \\
+\hline
+\mbox{\texttt{ out}}  & {\em uint32\+\_\+t} & The uint32\+\_\+t representation of the tiles color \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The color component of a tile 
+\end{DoxyReturn}
+\Hypertarget{tileMananger_8c_a8c97020719e2f02990631d48df376104}\label{tileMananger_8c_a8c97020719e2f02990631d48df376104} 
+\index{tileMananger.c@{tileMananger.c}!getTileGraphic@{getTileGraphic}}
+\index{getTileGraphic@{getTileGraphic}!tileMananger.c@{tileMananger.c}}
+\doxysubsubsection{\texorpdfstring{getTileGraphic()}{getTileGraphic()}}
+{\footnotesize\ttfamily char get\+Tile\+Graphic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}}}]{tile }\end{DoxyParamCaption})}
+
+
+
+Finds the character representation of a tile based on the game mode and its parameters. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em tile} & The tile that gets checked to find a character representation \\
+\hline
+\mbox{\texttt{ out}}  & {\em char} & A character representation of a tile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The graphical component of a tile 
+\end{DoxyReturn}
+\Hypertarget{tileMananger_8c_a8b90c1271b330ca7d31c487935aebac9}\label{tileMananger_8c_a8b90c1271b330ca7d31c487935aebac9} 
+\index{tileMananger.c@{tileMananger.c}!updateMinesShowing@{updateMinesShowing}}
+\index{updateMinesShowing@{updateMinesShowing}!tileMananger.c@{tileMananger.c}}
+\doxysubsubsection{\texorpdfstring{updateMinesShowing()}{updateMinesShowing()}}
+{\footnotesize\ttfamily void update\+Mines\+Showing (\begin{DoxyParamCaption}\item[{bool}]{lost }\end{DoxyParamCaption})}
+
+
+
+Lets get\+Tile\+Graphic know to show mines via updating a common boolean. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lost} & The boolean value that the common boolean gets updated to \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,91 @@
+\doxysection{input\+Manager.\+h File Reference}
+\hypertarget{inputManager_8h}{}\label{inputManager_8h}\index{inputManager.h@{inputManager.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$notcurses/notcurses.\+h$>$}\newline
+Include dependency graph for input\+Manager.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}\label{inputManager_8h_a6c3b36516b1e815fc654ec0682987345} 
+typedef enum \mbox{\hyperlink{inputManager_8h_ae0788902052ebaa712c14e33a5cf398c}{input\+Type}} {\bfseries t\+\_\+input}
+\begin{DoxyCompactList}\small\item\em An enum representing potential choices a player make. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{inputManager_8h_ae0788902052ebaa712c14e33a5cf398c}\label{inputManager_8h_ae0788902052ebaa712c14e33a5cf398c} 
+enum \mbox{\hyperlink{inputManager_8h_ae0788902052ebaa712c14e33a5cf398c}{input\+Type}} \{ \newline
+{\bfseries LEFT}
+, {\bfseries RIGHT}
+, {\bfseries DOWN}
+, {\bfseries UP}
+, \newline
+{\bfseries FLAGGED}
+, {\bfseries CLEARED}
+, {\bfseries QUIT}
+, {\bfseries RESTART}
+, \newline
+{\bfseries NONE}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum representing potential choices a player make. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{inputManager_8h_ab5e3128f040c850c6cc3ddccd3255d1d}\label{inputManager_8h_ab5e3128f040c850c6cc3ddccd3255d1d} 
+void {\bfseries initialize\+Input} ()
+\begin{DoxyCompactList}\small\item\em Initalizes the base Not\+Curses refrence for itself and other programs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}{t\+\_\+input}} \mbox{\hyperlink{inputManager_8h_af34cced9e7aae93cf3af9b54df8fa29b}{get\+\_\+input}} ()
+\begin{DoxyCompactList}\small\item\em Waits for user input and then assigns the given key press a corresponding t\+\_\+input. \end{DoxyCompactList}\item 
+struct notcurses \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{inputManager_8h_ab1092e9d1ed4f4cdb34d74b716761e4f}{get\+Not\+Curses\+Refrence}} ()
+\begin{DoxyCompactList}\small\item\em Returns the universal Not\+Curses refrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tristan Risi, 900367080 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/10/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{inputManager_8h_af34cced9e7aae93cf3af9b54df8fa29b}\label{inputManager_8h_af34cced9e7aae93cf3af9b54df8fa29b} 
+\index{inputManager.h@{inputManager.h}!get\_input@{get\_input}}
+\index{get\_input@{get\_input}!inputManager.h@{inputManager.h}}
+\doxysubsubsection{\texorpdfstring{get\_input()}{get\_input()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}{t\+\_\+input}} get\+\_\+input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Waits for user input and then assigns the given key press a corresponding t\+\_\+input. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em t\+\_\+input} & An enum representation of the user\textquotesingle{}s input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the action a user took with their input 
+\end{DoxyReturn}
+\Hypertarget{inputManager_8h_ab1092e9d1ed4f4cdb34d74b716761e4f}\label{inputManager_8h_ab1092e9d1ed4f4cdb34d74b716761e4f} 
+\index{inputManager.h@{inputManager.h}!getNotCursesRefrence@{getNotCursesRefrence}}
+\index{getNotCursesRefrence@{getNotCursesRefrence}!inputManager.h@{inputManager.h}}
+\doxysubsubsection{\texorpdfstring{getNotCursesRefrence()}{getNotCursesRefrence()}}
+{\footnotesize\ttfamily struct notcurses \texorpdfstring{$\ast$}{*} get\+Not\+Curses\+Refrence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the universal Not\+Curses refrence. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em notcurses\texorpdfstring{$\ast$}{*}} & The universal Not\+Curses refrence for the program \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Not\+Curses refrence 
+\end{DoxyReturn}

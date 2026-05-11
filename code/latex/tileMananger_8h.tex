@@ -1,0 +1,110 @@
+\doxysection{tile\+Mananger.\+h File Reference}
+\hypertarget{tileMananger_8h}{}\label{tileMananger_8h}\index{tileMananger.h@{tileMananger.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$notcurses/notcurses.\+h$>$}\newline
+{\ttfamily \#include "{}game\+Manager.\+h"{}}\newline
+Include dependency graph for tile\+Mananger.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnormalTile}{normal\+Tile}}
+\begin{DoxyCompactList}\small\item\em A struct representing any given singular space on a minesweeper board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe}\label{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe} 
+typedef enum \mbox{\hyperlink{tileMananger_8h_ac62d5d3050448bc6ef6a2f594d22d350}{type\+Space}} {\bfseries t\+\_\+space}
+\begin{DoxyCompactList}\small\item\em An enum representing the type of space a tile is. \end{DoxyCompactList}\item 
+\Hypertarget{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}\label{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0} 
+typedef struct \mbox{\hyperlink{structnormalTile}{normal\+Tile}} {\bfseries t\+\_\+tile}
+\begin{DoxyCompactList}\small\item\em A struct representing any given singular space on a minesweeper board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{tileMananger_8h_ac62d5d3050448bc6ef6a2f594d22d350}\label{tileMananger_8h_ac62d5d3050448bc6ef6a2f594d22d350} 
+enum \mbox{\hyperlink{tileMananger_8h_ac62d5d3050448bc6ef6a2f594d22d350}{type\+Space}} \{ {\bfseries BLANK}
+, {\bfseries HELPER}
+, {\bfseries UNSEEN}
+, {\bfseries FLAG}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum representing the type of space a tile is. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{tileMananger_8h_a8c97020719e2f02990631d48df376104}{get\+Tile\+Graphic}} (\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} tile)
+\begin{DoxyCompactList}\small\item\em Finds the character representation of a tile based on the game mode and its parameters. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{tileMananger_8h_a84a06f98f0d2589f720c6e67920218fd}{get\+Tile\+Color}} (\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} tile)
+\begin{DoxyCompactList}\small\item\em Finds the color of a tile based on the game mode and its parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tileMananger_8h_a8b90c1271b330ca7d31c487935aebac9}{update\+Mines\+Showing}} (bool lost)
+\begin{DoxyCompactList}\small\item\em Lets get\+Tile\+Graphic know to show mines via updating a common boolean. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tristan Risi, 900367080 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/10/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tileMananger_8h_a84a06f98f0d2589f720c6e67920218fd}\label{tileMananger_8h_a84a06f98f0d2589f720c6e67920218fd} 
+\index{tileMananger.h@{tileMananger.h}!getTileColor@{getTileColor}}
+\index{getTileColor@{getTileColor}!tileMananger.h@{tileMananger.h}}
+\doxysubsubsection{\texorpdfstring{getTileColor()}{getTileColor()}}
+{\footnotesize\ttfamily uint32\+\_\+t get\+Tile\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}}}]{tile }\end{DoxyParamCaption})}
+
+
+
+Finds the color of a tile based on the game mode and its parameters. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em tile} & The tile that gets checked to find its color \\
+\hline
+\mbox{\texttt{ out}}  & {\em uint32\+\_\+t} & The uint32\+\_\+t representation of the tiles color \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The color component of a tile 
+\end{DoxyReturn}
+\Hypertarget{tileMananger_8h_a8c97020719e2f02990631d48df376104}\label{tileMananger_8h_a8c97020719e2f02990631d48df376104} 
+\index{tileMananger.h@{tileMananger.h}!getTileGraphic@{getTileGraphic}}
+\index{getTileGraphic@{getTileGraphic}!tileMananger.h@{tileMananger.h}}
+\doxysubsubsection{\texorpdfstring{getTileGraphic()}{getTileGraphic()}}
+{\footnotesize\ttfamily char get\+Tile\+Graphic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}}}]{tile }\end{DoxyParamCaption})}
+
+
+
+Finds the character representation of a tile based on the game mode and its parameters. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em tile} & The tile that gets checked to find a character representation \\
+\hline
+\mbox{\texttt{ out}}  & {\em char} & A character representation of a tile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The graphical component of a tile 
+\end{DoxyReturn}
+\Hypertarget{tileMananger_8h_a8b90c1271b330ca7d31c487935aebac9}\label{tileMananger_8h_a8b90c1271b330ca7d31c487935aebac9} 
+\index{tileMananger.h@{tileMananger.h}!updateMinesShowing@{updateMinesShowing}}
+\index{updateMinesShowing@{updateMinesShowing}!tileMananger.h@{tileMananger.h}}
+\doxysubsubsection{\texorpdfstring{updateMinesShowing()}{updateMinesShowing()}}
+{\footnotesize\ttfamily void update\+Mines\+Showing (\begin{DoxyParamCaption}\item[{bool}]{lost }\end{DoxyParamCaption})}
+
+
+
+Lets get\+Tile\+Graphic know to show mines via updating a common boolean. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lost} & The boolean value that the common boolean gets updated to \\
+\hline
+\end{DoxyParams}

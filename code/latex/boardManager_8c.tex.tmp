@@ -1,0 +1,316 @@
+\doxysection{board\+Manager.\+c File Reference}
+\hypertarget{boardManager_8c}{}\label{boardManager_8c}\index{boardManager.c@{boardManager.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$notcurses/notcurses.\+h$>$}\newline
+{\ttfamily \#include "{}board\+Manager.\+h"{}}\newline
+Include dependency graph for board\+Manager.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{boardManager_8c_adab2ce63589d5c78b670c4368aa2459c}\label{boardManager_8c_adab2ce63589d5c78b670c4368aa2459c} 
+void {\bfseries set\+Standard\+Plane} ()
+\begin{DoxyCompactList}\small\item\em Sets the standard NCplane for both the board and menu. \end{DoxyCompactList}\item 
+struct ncplane \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{boardManager_8c_ad86ca4c74e3ee199927842569b9c9672}{get\+Standard\+Plane}} ()
+\begin{DoxyCompactList}\small\item\em Returns the standard NCplane refrence. \end{DoxyCompactList}\item 
+\Hypertarget{boardManager_8c_aceed22233d78b31550f7b4df667c71c4}\label{boardManager_8c_aceed22233d78b31550f7b4df667c71c4} 
+void {\bfseries initialize\+Board} ()
+\begin{DoxyCompactList}\small\item\em Allocates a double array in memory of t\+\_\+tile according to the games size and sets the tile values to appropriate defaults. \end{DoxyCompactList}\item 
+\Hypertarget{boardManager_8c_a4e9043d1bf8b58cb35f2c982bbb06dd4}\label{boardManager_8c_a4e9043d1bf8b58cb35f2c982bbb06dd4} 
+void {\bfseries free\+Board} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory stored in game\+Board. \end{DoxyCompactList}\item 
+\Hypertarget{boardManager_8c_a8310d6d1e915cb179f834d9ca017950a}\label{boardManager_8c_a8310d6d1e915cb179f834d9ca017950a} 
+void {\bfseries print\+Board} ()
+\begin{DoxyCompactList}\small\item\em Updates the standard plane with the current character representation and color of each tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{boardManager_8c_ae867003eaa7802bf4dcd433ca12a7d37}{move\+Cursor}} (\mbox{\hyperlink{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}{t\+\_\+input}} movement)
+\begin{DoxyCompactList}\small\item\em Moves the cursor, up, down, left, or right according to the t\+\_\+input passed in. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{boardManager_8c_a4a41446baf9048afbaa5126ab6557eb6}{update\+Selected\+Tile}} (\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} tile)
+\begin{DoxyCompactList}\small\item\em Changes the color of the initally selected tile back to its original color then highlights and stores the new selected tile. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{boardManager_8c_a6c27cb5eafc7689ecd306747085f4211}{generate\+Mines}} ()
+\begin{DoxyCompactList}\small\item\em Goes through every tile on the board with a 10\% to make any valid tile a mine. Repeats until mines placed equals \doxylink{gameManager_8c_a1882f673ee9170f9daa0fe8f340da6f8}{get\+Total\+Mine\+Count()} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{boardManager_8c_a12e9046a29150fbab450f62b62d63f17}{get\+Tile\+Distance}} (int row1, int col1, int row2, int col2)
+\begin{DoxyCompactList}\small\item\em Calculates the distance between two mines on the board. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} \mbox{\hyperlink{boardManager_8c_a8947f47e5aa6e1e213d5f3eaa7360b50}{get\+Tile\+Relative}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em Gets the tile realative to the selected tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{boardManager_8c_ac623f1bc1f87db275bd8a604d4a986e4}{change\+Tile\+Space\+Type\+Relative}} (int row, int col, \mbox{\hyperlink{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe}{t\+\_\+space}} space)
+\begin{DoxyCompactList}\small\item\em Changes the space type of the tile realative to the selected tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{boardManager_8c_a6303d364755a31b436c95182c238ff3c}{set\+Mines\+Adjacent\+Relative}} (int row, int col, int mines)
+\begin{DoxyCompactList}\small\item\em Sets the number of mines adjacent for the tile realative to the selected tile. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{boardManager_8c_a551a6a44c77600ceb02c7ed8e3c1a219}{is\+In\+Bounds}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em Checks if any given coordinates are in the bounds of the game board and returns true if it is. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{boardManager_8c_a6fa67b99eab9af29cd41c38380deedaf}{take\+Mine\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Takes the count of mines correctly flagged by the player. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{boardManager_8c_ae36cfd9cc0d9e558496abf90694cc664}{get\+Real\+Mines}} ()
+\begin{DoxyCompactList}\small\item\em returns the real mine count for double mine \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{boardManager_8c_a95672e218c892e33e2e89fdd88d800bc}\label{boardManager_8c_a95672e218c892e33e2e89fdd88d800bc} 
+struct ncplane \texorpdfstring{$\ast$}{*} {\bfseries stdplane} = NULL
+\item 
+\Hypertarget{boardManager_8c_ac3ccf5495c7699d0e68fba58c609db7c}\label{boardManager_8c_ac3ccf5495c7699d0e68fba58c609db7c} 
+\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} {\bfseries game\+Board}
+\item 
+\Hypertarget{boardManager_8c_a37faa43f267c4d0a2b3943d24ed58fc5}\label{boardManager_8c_a37faa43f267c4d0a2b3943d24ed58fc5} 
+\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} {\bfseries empty\+Tile}
+\item 
+\Hypertarget{boardManager_8c_aac95452efcd521793de62284b6f05c79}\label{boardManager_8c_aac95452efcd521793de62284b6f05c79} 
+\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} {\bfseries selected\+Tile}
+\item 
+\Hypertarget{boardManager_8c_aad96a74a8e07bceb571a64a3355b779d}\label{boardManager_8c_aad96a74a8e07bceb571a64a3355b779d} 
+int {\bfseries selected\+Row}
+\item 
+\Hypertarget{boardManager_8c_afb7f8938068f6e76174eaf928fb8ed59}\label{boardManager_8c_afb7f8938068f6e76174eaf928fb8ed59} 
+int {\bfseries selected\+Col}
+\item 
+\Hypertarget{boardManager_8c_a28111bc639ec6c599e31e095905f23fb}\label{boardManager_8c_a28111bc639ec6c599e31e095905f23fb} 
+bool {\bfseries black\+Tile} = true
+\item 
+\Hypertarget{boardManager_8c_ad466f94d35b83a2b6a5d81b37efea53b}\label{boardManager_8c_ad466f94d35b83a2b6a5d81b37efea53b} 
+int {\bfseries real\+Num\+Mines}
+\item 
+struct ncplane\+\_\+options \mbox{\hyperlink{boardManager_8c_af0ba043c6286aa743430c7d39ebcd98b}{tile\+Options}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tristan Risi, 900367080 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/10/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{boardManager_8c_ac623f1bc1f87db275bd8a604d4a986e4}\label{boardManager_8c_ac623f1bc1f87db275bd8a604d4a986e4} 
+\index{boardManager.c@{boardManager.c}!changeTileSpaceTypeRelative@{changeTileSpaceTypeRelative}}
+\index{changeTileSpaceTypeRelative@{changeTileSpaceTypeRelative}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{changeTileSpaceTypeRelative()}{changeTileSpaceTypeRelative()}}
+{\footnotesize\ttfamily void change\+Tile\+Space\+Type\+Relative (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{\mbox{\hyperlink{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe}{t\+\_\+space}}}]{space }\end{DoxyParamCaption})}
+
+
+
+Changes the space type of the tile realative to the selected tile. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em row} & The row offset from the selceted tile \\
+\hline
+\mbox{\texttt{ in}}  & {\em col} & The col offset from the selceted tile \\
+\hline
+\mbox{\texttt{ in}}  & {\em space} & The new space type for the tile at the offset \\
+\hline
+\end{DoxyParams}
+\Hypertarget{boardManager_8c_a6c27cb5eafc7689ecd306747085f4211}\label{boardManager_8c_a6c27cb5eafc7689ecd306747085f4211} 
+\index{boardManager.c@{boardManager.c}!generateMines@{generateMines}}
+\index{generateMines@{generateMines}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{generateMines()}{generateMines()}}
+{\footnotesize\ttfamily int generate\+Mines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Goes through every tile on the board with a 10\% to make any valid tile a mine. Repeats until mines placed equals \doxylink{gameManager_8c_a1882f673ee9170f9daa0fe8f340da6f8}{get\+Total\+Mine\+Count()} 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em int} & The total number of mines put on the board \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of mines really generated to gaurentee sucsessful placement. 
+\end{DoxyReturn}
+\Hypertarget{boardManager_8c_ae36cfd9cc0d9e558496abf90694cc664}\label{boardManager_8c_ae36cfd9cc0d9e558496abf90694cc664} 
+\index{boardManager.c@{boardManager.c}!getRealMines@{getRealMines}}
+\index{getRealMines@{getRealMines}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{getRealMines()}{getRealMines()}}
+{\footnotesize\ttfamily int get\+Real\+Mines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns the real mine count for double mine 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em int} & An int representing the number of mines placed in total \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total number of mines placed. 
+\end{DoxyReturn}
+\Hypertarget{boardManager_8c_ad86ca4c74e3ee199927842569b9c9672}\label{boardManager_8c_ad86ca4c74e3ee199927842569b9c9672} 
+\index{boardManager.c@{boardManager.c}!getStandardPlane@{getStandardPlane}}
+\index{getStandardPlane@{getStandardPlane}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{getStandardPlane()}{getStandardPlane()}}
+{\footnotesize\ttfamily struct ncplane \texorpdfstring{$\ast$}{*} get\+Standard\+Plane (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the standard NCplane refrence. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em ncplane\texorpdfstring{$\ast$}{*}} & The standard NCplane refrence for the program \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the NCplane refrence 
+\end{DoxyReturn}
+\Hypertarget{boardManager_8c_a12e9046a29150fbab450f62b62d63f17}\label{boardManager_8c_a12e9046a29150fbab450f62b62d63f17} 
+\index{boardManager.c@{boardManager.c}!getTileDistance@{getTileDistance}}
+\index{getTileDistance@{getTileDistance}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{getTileDistance()}{getTileDistance()}}
+{\footnotesize\ttfamily int get\+Tile\+Distance (\begin{DoxyParamCaption}\item[{int}]{row1,  }\item[{int}]{col1,  }\item[{int}]{row2,  }\item[{int}]{col2 }\end{DoxyParamCaption})}
+
+
+
+Calculates the distance between two mines on the board. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em row1} & The row index of tile 1 \\
+\hline
+\mbox{\texttt{ in}}  & {\em col1} & The col index of tile 1 \\
+\hline
+\mbox{\texttt{ in}}  & {\em row2} & The row index of tile 2 \\
+\hline
+\mbox{\texttt{ in}}  & {\em col2} & The col index of tile 2 \\
+\hline
+\mbox{\texttt{ out}}  & {\em int} & The integer representation of tile distance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total distance between two tiles 
+\end{DoxyReturn}
+\Hypertarget{boardManager_8c_a8947f47e5aa6e1e213d5f3eaa7360b50}\label{boardManager_8c_a8947f47e5aa6e1e213d5f3eaa7360b50} 
+\index{boardManager.c@{boardManager.c}!getTileRelative@{getTileRelative}}
+\index{getTileRelative@{getTileRelative}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{getTileRelative()}{getTileRelative()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}} get\+Tile\+Relative (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Gets the tile realative to the selected tile. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em row} & The row offset from the selceted tile \\
+\hline
+\mbox{\texttt{ in}}  & {\em col} & The col offset from the selceted tile \\
+\hline
+\mbox{\texttt{ out}}  & {\em t\+\_\+tile} & The t\+\_\+tile at the offset from the selected tile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The tile at the offset 
+\end{DoxyReturn}
+\Hypertarget{boardManager_8c_a551a6a44c77600ceb02c7ed8e3c1a219}\label{boardManager_8c_a551a6a44c77600ceb02c7ed8e3c1a219} 
+\index{boardManager.c@{boardManager.c}!isInBounds@{isInBounds}}
+\index{isInBounds@{isInBounds}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{isInBounds()}{isInBounds()}}
+{\footnotesize\ttfamily bool is\+In\+Bounds (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Checks if any given coordinates are in the bounds of the game board and returns true if it is. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em row} & The row of the index being checked \\
+\hline
+\mbox{\texttt{ in}}  & {\em col} & The col of the index being checked \\
+\hline
+\mbox{\texttt{ out}}  & {\em bool} & A boolean representing if its in bounds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if it is in bounds or not 
+\end{DoxyReturn}
+\Hypertarget{boardManager_8c_ae867003eaa7802bf4dcd433ca12a7d37}\label{boardManager_8c_ae867003eaa7802bf4dcd433ca12a7d37} 
+\index{boardManager.c@{boardManager.c}!moveCursor@{moveCursor}}
+\index{moveCursor@{moveCursor}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{moveCursor()}{moveCursor()}}
+{\footnotesize\ttfamily void move\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}{t\+\_\+input}}}]{movement }\end{DoxyParamCaption})}
+
+
+
+Moves the cursor, up, down, left, or right according to the t\+\_\+input passed in. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em t\+\_\+input} & The movement action the player took \\
+\hline
+\end{DoxyParams}
+\Hypertarget{boardManager_8c_a6303d364755a31b436c95182c238ff3c}\label{boardManager_8c_a6303d364755a31b436c95182c238ff3c} 
+\index{boardManager.c@{boardManager.c}!setMinesAdjacentRelative@{setMinesAdjacentRelative}}
+\index{setMinesAdjacentRelative@{setMinesAdjacentRelative}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{setMinesAdjacentRelative()}{setMinesAdjacentRelative()}}
+{\footnotesize\ttfamily void set\+Mines\+Adjacent\+Relative (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{mines }\end{DoxyParamCaption})}
+
+
+
+Sets the number of mines adjacent for the tile realative to the selected tile. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em row} & The row offset from the selceted tile \\
+\hline
+\mbox{\texttt{ in}}  & {\em col} & The col offset from the selceted tile \\
+\hline
+\mbox{\texttt{ in}}  & {\em mines} & The mines adjacent of the tile at the offset \\
+\hline
+\end{DoxyParams}
+\Hypertarget{boardManager_8c_a6fa67b99eab9af29cd41c38380deedaf}\label{boardManager_8c_a6fa67b99eab9af29cd41c38380deedaf} 
+\index{boardManager.c@{boardManager.c}!takeMineCount@{takeMineCount}}
+\index{takeMineCount@{takeMineCount}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{takeMineCount()}{takeMineCount()}}
+{\footnotesize\ttfamily int take\+Mine\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Takes the count of mines correctly flagged by the player. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em int} & An int representing the number of mines the player correctly flagged \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of mines the player correctly flagged 
+\end{DoxyReturn}
+\Hypertarget{boardManager_8c_a4a41446baf9048afbaa5126ab6557eb6}\label{boardManager_8c_a4a41446baf9048afbaa5126ab6557eb6} 
+\index{boardManager.c@{boardManager.c}!updateSelectedTile@{updateSelectedTile}}
+\index{updateSelectedTile@{updateSelectedTile}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{updateSelectedTile()}{updateSelectedTile()}}
+{\footnotesize\ttfamily void update\+Selected\+Tile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tileMananger_8h_a4729a4c29a9238dcdb05fc84e7e02af0}{t\+\_\+tile}}}]{tile }\end{DoxyParamCaption})}
+
+
+
+Changes the color of the initally selected tile back to its original color then highlights and stores the new selected tile. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em t\+\_\+tile} & The tile the player selected \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{boardManager_8c_af0ba043c6286aa743430c7d39ebcd98b}\label{boardManager_8c_af0ba043c6286aa743430c7d39ebcd98b} 
+\index{boardManager.c@{boardManager.c}!tileOptions@{tileOptions}}
+\index{tileOptions@{tileOptions}!boardManager.c@{boardManager.c}}
+\doxysubsubsection{\texorpdfstring{tileOptions}{tileOptions}}
+{\footnotesize\ttfamily struct ncplane\+\_\+options tile\+Options}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .rows\ =\ 1,}
+\DoxyCodeLine{\ \ \ \ .cols\ =\ 2,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

@@ -1,19 +1,25 @@
+/** @file 
+ *@author Tristan Risi, 900367080
+ *@date 5/10/2026
+*/
+
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
 #include <unistd.h>
 #include <notcurses/notcurses.h>
 
-
 #include "logicManager.h"
 
-
-int numMinesLeft;
-bool firstSpaceCleared;
-char str[14] ={"Num Mines:00"};
-
+//The NCplane for the stats screen
 struct ncplane *statsPlane = NULL;
-
+//A string used to keep the mine count 
+char str[14] ={"Num Mines:000"};
+//A running count of how many mines the player has yet to clear
+int numMinesLeft;
+//Only false if the user hasnt cleared anything
+bool firstSpaceCleared;
+//A bool thats true when a win or loss is because of timeTrial
 bool isTimeRelated = false;
 
 struct ncplane_options statsOptions = {
@@ -23,9 +29,12 @@ struct ncplane_options statsOptions = {
 
 void initializeLogic()
 {
+    //Makes and sets a seed according to both the time and identity of the function call
     srand(time(NULL) ^ getpid());
+    //Sets default variables
     numMinesLeft = getTotalMineCount();
     firstSpaceCleared = false;
+    //Creates the NCplane for the stats screen
     statsPlane = ncplane_create(getStandardPlane(),  &statsOptions);
     ncplane_move_yx(statsPlane, 2, getGameSize(false)*2+6);
     str[11]= (char)(numMinesLeft/10)+'0';
@@ -41,8 +50,8 @@ void affectTile(t_input input)
         generateMines();
         char totalMinesString[17] = "Overall Mines:000";
         int temp;
-        if(getGameMode() == DOUBLEMINE){temp = getRealMines();}
-        else{temp = getTotalMineCount();}
+        temp = getRealMines();
+        //Updates the stats screen to have the overall mine count 
         for(int j = 16; temp >0; j--) 
         {
             totalMinesString[j] = (char)((temp % 10) + '0');
@@ -59,30 +68,35 @@ void affectTile(t_input input)
     }
     else if(input == FLAGGED)
     {
+        //if Flagged unflag minecount back up
         if( getTileRelative(0,0).spaceType == FLAG)
         {
             changeTileSpaceTypeRelative(0,0, UNSEEN);
             numMinesLeft ++;
         }
+        //if not flagged flag mine count down
         else if(numMinesLeft >0)
         {
             changeTileSpaceTypeRelative(0,0, FLAG);
             numMinesLeft --;
         }
     }
-    else
-    {
-        return;
-    }
-    
+    else {return;}
+
+    //if the user has placed all their flags
     if(numMinesLeft <= 0)
     {
+        //check if all the mines have been flagged
         if(getTotalMineCount() == takeMineCount()) 
         {
+            //if so they've won
             setGameState(WON);
+            //if they've won and they havent went past the time they set a new record
             if(getGameMode() == TIME && isTimeRelated == false){setIsTimeRelated(true);}
         }
     }
+
+    //Prints out the running mine count with num mines 
     int temp = numMinesLeft;
     str[12] = ' ';
     str[11] = ' ';
@@ -98,43 +112,46 @@ void affectTile(t_input input)
 
 void reveal(int rowOffset, int colOffset)
 {
-    srand(time(NULL));
     int numMinesAdj = 0;
+    //temp variable that allows the reveal function to accept 0 as a valid number of adjacent mines
     bool liarCanContinue = false;
     for(int i=-1; i<2; i++)
     {
         for(int j=-1; j<2; j++)
         {
-            if(!(i==rowOffset && j == colOffset))
+            if(!(i == 0 && j == 0)) 
             {
+                //get the tile at the offset in a 3x3 grid
                 t_tile emtpyTileChecker = getTileRelative(rowOffset + i,colOffset+j);
+                //make sure its not a null tile
                 if(emtpyTileChecker.minesAdjacent == -1){continue;}
+                //if its chess and same color mines adjacent is 2 and if diffrent color 1
                 else if(emtpyTileChecker.isMine && getGameMode() == CHESS)
                 {
                     if(emtpyTileChecker.isBlack == getTileRelative(rowOffset,colOffset).isBlack){numMinesAdj+=2;}
                     else{numMinesAdj++;}
                 }
+                //if its anything else but double mine then its just 1 more mine
                 else if(emtpyTileChecker.isMine && getGameMode() != DOUBLEMINE){numMinesAdj++;}
+                //if its double mine the count is upped by the number of mines on a tile
                 else{numMinesAdj+=emtpyTileChecker.numMines;}
             }
         }
     }
+    //if the game mode is liar then the count is set off by one and its allowed to pass as a helper
     if(getGameMode() == LIAR && numMinesAdj>0)
     {
         if(rand() % 2 == 0){numMinesAdj--;}
         else{numMinesAdj++;}
         liarCanContinue = true;
     }
-    if(liarCanContinue == true)
+    //If the tile has adjacent mines its set as a helper and the recurrsion ends
+    if(numMinesAdj>0|| liarCanContinue == true)
     {
         setMinesAdjacentRelative(rowOffset,colOffset,numMinesAdj);
         changeTileSpaceTypeRelative(rowOffset,colOffset,HELPER);
     }
-    else if(numMinesAdj>0)
-    {
-        setMinesAdjacentRelative(rowOffset,colOffset,numMinesAdj);
-        changeTileSpaceTypeRelative(rowOffset,colOffset,HELPER);
-    }
+    //If not its set as blank and the loop recursivley goes to the next 8 adjacent tiles
     else
     {
         changeTileSpaceTypeRelative(rowOffset,colOffset,BLANK);
@@ -153,6 +170,7 @@ void reveal(int rowOffset, int colOffset)
     }
 }
 
+
 void updateStats(time_t start, time_t end)
 {
     if(getGameState() == WON && isTimeRelated == true){ncplane_putstr_yx(statsPlane, 3, 0, "RECORD TIME :0");}
@@ -161,6 +179,7 @@ void updateStats(time_t start, time_t end)
     else if(getGameState() == LOST){ncplane_putstr_yx(statsPlane, 3, 0, "YOU LOST :(");}
     else 
     {
+        //Prints the minutes and seconds elapsed in accordance to the totalseconds
         int totalSeconds = (int)difftime(end, start);
 
         int minutes = totalSeconds / 60;

@@ -33,5 +33,9 @@ LARGE: 689s
 
 
 3.)NOTES
-
+This section is just a couple of notes on limitations within the project and why they're there.
+Firstly this is keyboard based. I tried to implement mouse controls via the GPM library, but, as far as I know, running Linux through WSL means that Linux can't get acsess to your mouse drivers and in turn GPM doesnt work. I'm unsure if there are any work arounds but I stopped and opted for keyboard controls shortly after learning about the driver issue.
+For chess I got rid of the unique colors for each number and chose to instead have everything be black and white. I did this for two main reasons. Firstly I felt it made seeing what was going on easier. And secondly making the backgrounds of the cells change color left either ugly gaps or made the grid pattern less clear.
+This leads into another limitation which is all of my graphics are character based and not sprite based. There's no great reason for that other than time constraints but it has an impact on things like chess as mentioned previously.
+Finally I'm unsure of how truly random my random based functions are. I tried to mitigatie it and I'm happy with the results but when playing "Liar" for example you can see that several tiles will be minus one in a row when first gernerated.
 

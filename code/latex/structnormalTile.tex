@@ -1,0 +1,36 @@
+\doxysection{normal\+Tile Struct Reference}
+\hypertarget{structnormalTile}{}\label{structnormalTile}\index{normalTile@{normalTile}}
+
+
+A struct representing any given singular space on a minesweeper board.  
+
+
+
+
+{\ttfamily \#include $<$tile\+Mananger.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structnormalTile_af9756f9caca9cf2795caa9f5643a75e0}\label{structnormalTile_af9756f9caca9cf2795caa9f5643a75e0} 
+struct ncplane \texorpdfstring{$\ast$}{*} {\bfseries tile\+Plane}
+\begin{DoxyCompactList}\small\item\em A pointer to the plane each tile takes up. \end{DoxyCompactList}\item 
+\Hypertarget{structnormalTile_a091ed90aae73517893ba12e975ba33e5}\label{structnormalTile_a091ed90aae73517893ba12e975ba33e5} 
+\mbox{\hyperlink{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe}{t\+\_\+space}} {\bfseries space\+Type}
+\begin{DoxyCompactList}\small\item\em The type of space every tile is. \end{DoxyCompactList}\item 
+\Hypertarget{structnormalTile_ab572ac0a3f8f84e6df3bc4e56e660ef2}\label{structnormalTile_ab572ac0a3f8f84e6df3bc4e56e660ef2} 
+int {\bfseries mines\+Adjacent}
+\begin{DoxyCompactList}\small\item\em The number of mines adjacent to any given tile. \end{DoxyCompactList}\item 
+\Hypertarget{structnormalTile_a809b49c4397d9d19a9a7d1934731207d}\label{structnormalTile_a809b49c4397d9d19a9a7d1934731207d} 
+int {\bfseries num\+Mines}
+\begin{DoxyCompactList}\small\item\em The number of mines a tile has if its double mine. \end{DoxyCompactList}\item 
+\Hypertarget{structnormalTile_a52769fe849277d1624815864eed893db}\label{structnormalTile_a52769fe849277d1624815864eed893db} 
+bool {\bfseries is\+Mine}
+\begin{DoxyCompactList}\small\item\em A bool thats true if the tile is a mine. \end{DoxyCompactList}\item 
+\Hypertarget{structnormalTile_ab8f0937b77faa97afee0722c2ef84a5a}\label{structnormalTile_ab8f0937b77faa97afee0722c2ef84a5a} 
+bool {\bfseries is\+Black}
+\begin{DoxyCompactList}\small\item\em A bool used for the chess variant that determines if its white or black. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A struct representing any given singular space on a minesweeper board. 

@@ -1,0 +1,42 @@
+\doxysection{board\+Manager.\+h}
+\hypertarget{boardManager_8h_source}{}\label{boardManager_8h_source}\mbox{\hyperlink{boardManager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <notcurses/notcurses.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tileMananger_8h}{tileMananger.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{inputManager_8h}{inputManager.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_adab2ce63589d5c78b670c4368aa2459c}{setStandardPlane}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }ncplane*\ \mbox{\hyperlink{boardManager_8h_ad86ca4c74e3ee199927842569b9c9672}{getStandardPlane}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_aceed22233d78b31550f7b4df667c71c4}{initializeBoard}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_a4e9043d1bf8b58cb35f2c982bbb06dd4}{freeBoard}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_a8310d6d1e915cb179f834d9ca017950a}{printBoard}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_ae867003eaa7802bf4dcd433ca12a7d37}{moveCursor}}(\mbox{\hyperlink{inputManager_8h_a6c3b36516b1e815fc654ec0682987345}{t\_input}}\ movement);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_a4a41446baf9048afbaa5126ab6557eb6}{updateSelectedTile}}(\mbox{\hyperlink{structnormalTile}{t\_tile}}\ tile);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{boardManager_8h_a6c27cb5eafc7689ecd306747085f4211}{generateMines}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{boardManager_8h_a12e9046a29150fbab450f62b62d63f17}{getTileDistance}}(\textcolor{keywordtype}{int}\ row1,\ \textcolor{keywordtype}{int}\ col1,\ \textcolor{keywordtype}{int}\ row2,\ \textcolor{keywordtype}{int}\ col2);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ \mbox{\hyperlink{structnormalTile}{t\_tile}}\ \mbox{\hyperlink{boardManager_8h_a8947f47e5aa6e1e213d5f3eaa7360b50}{getTileRelative}}(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_ac623f1bc1f87db275bd8a604d4a986e4}{changeTileSpaceTypeRelative}}(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col,\ \mbox{\hyperlink{tileMananger_8h_a95b69daf558c56c7b36d3c347b6ca5fe}{t\_space}}\ space);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{boardManager_8h_a6303d364755a31b436c95182c238ff3c}{setMinesAdjacentRelative}}(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col,\ \textcolor{keywordtype}{int}\ mines);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{boardManager_8h_a551a6a44c77600ceb02c7ed8e3c1a219}{isInBounds}}(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{boardManager_8h_a6fa67b99eab9af29cd41c38380deedaf}{takeMineCount}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00116\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{boardManager_8h_ae36cfd9cc0d9e558496abf90694cc664}{getRealMines}}();}
+
+\end{DoxyCode}

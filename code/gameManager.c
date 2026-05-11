@@ -1,8 +1,11 @@
+/** @file 
+ *@author Tristan Risi, 900367080
+ *@date 5/10/2026
+*/
+
 #include <stdlib.h>
 #include <stdbool.h>
 #include "gameManager.h"
-
-/*Let the mine manager determine the total number of mi*/
 
 
 t_state universalGameState;
@@ -38,6 +41,7 @@ void setGameSize(t_size size)
 {
     universalGameSize = size;
 }
+
 int getGameSize(bool isRow)
 {
     if(isRow)

@@ -1,0 +1,235 @@
+\doxysection{game\+Manager.\+h File Reference}
+\hypertarget{gameManager_8h}{}\label{gameManager_8h}\index{gameManager.h@{gameManager.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for game\+Manager.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}\label{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2} 
+typedef enum \mbox{\hyperlink{gameManager_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}} {\bfseries t\+\_\+state}
+\begin{DoxyCompactList}\small\item\em An enum that keeps track if the player lost, won or if they\textquotesingle{}re still playing. \end{DoxyCompactList}\item 
+\Hypertarget{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}\label{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6} 
+typedef enum \mbox{\hyperlink{gameManager_8h_a115508efe199d81fdc8a4d76700c8e94}{game\+Mode}} {\bfseries t\+\_\+mode}
+\begin{DoxyCompactList}\small\item\em An enum that keeps track of the players chosen gamemode with\+: Standard, Chess, Liar, Double Mine, and Time Trial. \end{DoxyCompactList}\item 
+\Hypertarget{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}\label{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3} 
+typedef enum \mbox{\hyperlink{gameManager_8h_aff5b67b39aefea486e9cc29d0c2b4730}{game\+Size}} {\bfseries t\+\_\+size}
+\begin{DoxyCompactList}\small\item\em An enum that keeps track if the player lost, won or if they\textquotesingle{}re still playing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gameManager_8h_aaf29bbe309504beb4cfec2481eacee62}\label{gameManager_8h_aaf29bbe309504beb4cfec2481eacee62} 
+enum \mbox{\hyperlink{gameManager_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}} \{ {\bfseries WON}
+, {\bfseries LOST}
+, {\bfseries PLAYING}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum that keeps track if the player lost, won or if they\textquotesingle{}re still playing. \end{DoxyCompactList}\item 
+\Hypertarget{gameManager_8h_a115508efe199d81fdc8a4d76700c8e94}\label{gameManager_8h_a115508efe199d81fdc8a4d76700c8e94} 
+enum \mbox{\hyperlink{gameManager_8h_a115508efe199d81fdc8a4d76700c8e94}{game\+Mode}} \{ \newline
+{\bfseries STANDARD}
+, {\bfseries CHESS}
+, {\bfseries LIAR}
+, {\bfseries DOUBLEMINE}
+, \newline
+{\bfseries TIME}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum that keeps track of the players chosen gamemode with\+: Standard, Chess, Liar, Double Mine, and Time Trial. \end{DoxyCompactList}\item 
+\Hypertarget{gameManager_8h_aff5b67b39aefea486e9cc29d0c2b4730}\label{gameManager_8h_aff5b67b39aefea486e9cc29d0c2b4730} 
+enum \mbox{\hyperlink{gameManager_8h_aff5b67b39aefea486e9cc29d0c2b4730}{game\+Size}} \{ {\bfseries SMALL}
+, {\bfseries NORMAL}
+, {\bfseries LARGE}
+, {\bfseries CUSTOM}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum that keeps track if the player lost, won or if they\textquotesingle{}re still playing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gameManager_8h_ae8869f488b0ad6b8c8b2695d6def4811}{set\+Game\+State}} (\mbox{\hyperlink{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}{t\+\_\+state}} state)
+\begin{DoxyCompactList}\small\item\em Sets the universal game state to the given state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}{t\+\_\+state}} \mbox{\hyperlink{gameManager_8h_a5d4045665a7ea26a0b091313b4caf49a}{get\+Game\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the universal game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameManager_8h_a699e2052e57e3889871d94d9165cfef6}{set\+Game\+Mode}} (\mbox{\hyperlink{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}{t\+\_\+mode}} mode)
+\begin{DoxyCompactList}\small\item\em Sets the universal game mode to the given mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}{t\+\_\+mode}} \mbox{\hyperlink{gameManager_8h_a7e284bcca25203f2acbe7909b601104e}{get\+Game\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Gets the universal game mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameManager_8h_aee96642b7faeac661b2602a38a219ff8}{set\+Game\+Size}} (\mbox{\hyperlink{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}{t\+\_\+size}} size)
+\begin{DoxyCompactList}\small\item\em Sets the universal game size to the given size. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gameManager_8h_a4f1e534603726f7134a9608b6b94c10e}{get\+Game\+Size}} (bool is\+Row)
+\begin{DoxyCompactList}\small\item\em Gets either the number of rows or number of columns with respect to the universal game size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}{t\+\_\+size}} \mbox{\hyperlink{gameManager_8h_ae1847492655c04ba98f4588de9a18523}{get\+Universal\+Game\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Gets the universal game size. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gameManager_8h_a1882f673ee9170f9daa0fe8f340da6f8}{get\+Total\+Mine\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the total number of expected mines in relation to the universal game size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameManager_8h_a9da7d3f9c5d19aa28e949a4de2cfdc70}{set\+Custom\+Params}} (int row, int col, int mines)
+\begin{DoxyCompactList}\small\item\em Sets the rows, columns, and mines entered by a user as constants to be acsessed through the CUSTOM size enum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tristan Risi, 900367080 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/10/2026 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gameManager_8h_a7e284bcca25203f2acbe7909b601104e}\label{gameManager_8h_a7e284bcca25203f2acbe7909b601104e} 
+\index{gameManager.h@{gameManager.h}!getGameMode@{getGameMode}}
+\index{getGameMode@{getGameMode}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{getGameMode()}{getGameMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}{t\+\_\+mode}} get\+Game\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the universal game mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em t\+\_\+mode} & An enum representation of the universal game mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the universal game mode 
+\end{DoxyReturn}
+\Hypertarget{gameManager_8h_a4f1e534603726f7134a9608b6b94c10e}\label{gameManager_8h_a4f1e534603726f7134a9608b6b94c10e} 
+\index{gameManager.h@{gameManager.h}!getGameSize@{getGameSize}}
+\index{getGameSize@{getGameSize}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{getGameSize()}{getGameSize()}}
+{\footnotesize\ttfamily int get\+Game\+Size (\begin{DoxyParamCaption}\item[{bool}]{is\+Row }\end{DoxyParamCaption})}
+
+
+
+Gets either the number of rows or number of columns with respect to the universal game size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em is\+Row} & A bool that determines if the function should return the number of rows or columns \\
+\hline
+\mbox{\texttt{ out}}  & {\em int} & An integer representing either the row count or the column count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+one aspect of the total board size 
+\end{DoxyReturn}
+\Hypertarget{gameManager_8h_a5d4045665a7ea26a0b091313b4caf49a}\label{gameManager_8h_a5d4045665a7ea26a0b091313b4caf49a} 
+\index{gameManager.h@{gameManager.h}!getGameState@{getGameState}}
+\index{getGameState@{getGameState}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{getGameState()}{getGameState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}{t\+\_\+state}} get\+Game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the universal game state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em t\+\_\+state} & An enum representation of the universal game state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the universal game state 
+\end{DoxyReturn}
+\Hypertarget{gameManager_8h_a1882f673ee9170f9daa0fe8f340da6f8}\label{gameManager_8h_a1882f673ee9170f9daa0fe8f340da6f8} 
+\index{gameManager.h@{gameManager.h}!getTotalMineCount@{getTotalMineCount}}
+\index{getTotalMineCount@{getTotalMineCount}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{getTotalMineCount()}{getTotalMineCount()}}
+{\footnotesize\ttfamily int get\+Total\+Mine\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the total number of expected mines in relation to the universal game size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em int} & An int of the total number of mines the board should have \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the mines on the board 
+\end{DoxyReturn}
+\Hypertarget{gameManager_8h_ae1847492655c04ba98f4588de9a18523}\label{gameManager_8h_ae1847492655c04ba98f4588de9a18523} 
+\index{gameManager.h@{gameManager.h}!getUniversalGameSize@{getUniversalGameSize}}
+\index{getUniversalGameSize@{getUniversalGameSize}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{getUniversalGameSize()}{getUniversalGameSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}{t\+\_\+size}} get\+Universal\+Game\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the universal game size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em t\+\_\+size} & An enum representation of the universal game size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the universal game size 
+\end{DoxyReturn}
+\Hypertarget{gameManager_8h_a9da7d3f9c5d19aa28e949a4de2cfdc70}\label{gameManager_8h_a9da7d3f9c5d19aa28e949a4de2cfdc70} 
+\index{gameManager.h@{gameManager.h}!setCustomParams@{setCustomParams}}
+\index{setCustomParams@{setCustomParams}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{setCustomParams()}{setCustomParams()}}
+{\footnotesize\ttfamily void set\+Custom\+Params (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{mines }\end{DoxyParamCaption})}
+
+
+
+Sets the rows, columns, and mines entered by a user as constants to be acsessed through the CUSTOM size enum. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em row} & The number of rows the user wanted for the custom board \\
+\hline
+\mbox{\texttt{ in}}  & {\em col} & The number of columns the user wanted for the custom board \\
+\hline
+\mbox{\texttt{ in}}  & {\em mines} & The number of mines the user wanted for the custom board \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gameManager_8h_a699e2052e57e3889871d94d9165cfef6}\label{gameManager_8h_a699e2052e57e3889871d94d9165cfef6} 
+\index{gameManager.h@{gameManager.h}!setGameMode@{setGameMode}}
+\index{setGameMode@{setGameMode}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{setGameMode()}{setGameMode()}}
+{\footnotesize\ttfamily void set\+Game\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gameManager_8h_a3d0db04538ea9c225af2360fb3a7cfb6}{t\+\_\+mode}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the universal game mode to the given mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mode} & An enum of the desired game mode \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gameManager_8h_aee96642b7faeac661b2602a38a219ff8}\label{gameManager_8h_aee96642b7faeac661b2602a38a219ff8} 
+\index{gameManager.h@{gameManager.h}!setGameSize@{setGameSize}}
+\index{setGameSize@{setGameSize}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{setGameSize()}{setGameSize()}}
+{\footnotesize\ttfamily void set\+Game\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gameManager_8h_a1ce7f26979df8dd18a74fbfeafb16cb3}{t\+\_\+size}}}]{size }\end{DoxyParamCaption})}
+
+
+
+Sets the universal game size to the given size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mode} & An enum of the desired game size \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gameManager_8h_ae8869f488b0ad6b8c8b2695d6def4811}\label{gameManager_8h_ae8869f488b0ad6b8c8b2695d6def4811} 
+\index{gameManager.h@{gameManager.h}!setGameState@{setGameState}}
+\index{setGameState@{setGameState}!gameManager.h@{gameManager.h}}
+\doxysubsubsection{\texorpdfstring{setGameState()}{setGameState()}}
+{\footnotesize\ttfamily void set\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gameManager_8h_a6fb241e3321047ae1110ddf5499372d2}{t\+\_\+state}}}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets the universal game state to the given state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em state} & An enum of the desired game state \\
+\hline
+\end{DoxyParams}
